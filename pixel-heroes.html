@@ -1,1 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.E Pixel Heroes | Official Playtest & Beta</title>
+    
+    <link rel="icon" type="image/png" href="logo1.png">
 
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="B.E Pixel Heroes | Retro Turn-Based RPG">
+    <meta property="og:description" content="Join the Official Playtest! A retro pixel-art turn-based strategy RPG.">
+    <meta property="og:image" content="banner-pixel-heroes.jpg">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #fbbf24;       /* Gold pixel theme */
+            --accent: #00ffa3;        /* Magic neon blue/green */
+            --bg-dark: #0b0914;       /* Deep retro fantasy dark */
+            --card-bg: #16152b;
+            --card-border: #2a274c;
+            --text-main: #ffffff;
+            --text-dim: #a5a2c9;
+            --pixel-font: 'Press Start 2P', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            background-color: var(--bg-dark);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- HERO BANNER --- */
+        .hero-banner {
+            position: relative;
+            min-height: 85vh;
+            background: linear-gradient(to bottom, rgba(11, 9, 20, 0.4), rgba(11, 9, 20, 1)), url('banner-pixel-heroes.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 20px 8% 60px 8%;
+        }
+
+        /* --- TOP NAV --- */
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.3s;
+            background: rgba(22, 21, 43, 0.8);
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-back:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateX(-3px);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* --- LANG SWITCHER --- */
+        .lang-switcher { display: flex; gap: 5px; }
+        .lang-btn { 
+            background: rgba(22, 21, 43, 0.8); 
+            border: 1px solid var(--card-border); 
+            color: #888; 
+            padding: 6px 12px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            font-size: 0.75rem; 
+            font-weight: bold;
+            transition: 0.3s; 
+        }
+        .lang-btn:hover, .lang-btn.active { 
+            border-color: var(--primary); 
+            color: var(--primary); 
+            background: #1b1836;
+        }
+
+        .status-badge {
+            background: #252119;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+
+        /* --- HERO CONTENT --- */
+        .hero-title-container {
+            max-width: 800px;
+            margin-top: 40px;
+        }
+
+        .game-title {
+            font-family: var(--pixel-font);
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            color: var(--primary);
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .game-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-pixel-primary {
+            background: var(--primary);
+            color: #000;
+            font-family: var(--pixel-font);
+            font-size: 0.85rem;
+            padding: 18px 30px;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #b48008, 0 10px 20px rgba(251, 191, 36, 0.3);
+            transition: all 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-pixel-primary:hover {
+            background: #fcd34d;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #b48008, 0 12px 25px rgba(251, 191, 36, 0.4);
+        }
+
+        .btn-pixel-primary:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #b48008;
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: #fff;
+            border: 1px solid var(--card-border);
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0, 255, 163, 0.05);
+        }
+
+        /* --- SECTIONS --- */
+        .container {
+            padding: 80px 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-heading h2 {
+            font-family: var(--pixel-font);
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        .section-heading p {
+            color: var(--text-dim);
+            font-size: 1.05rem;
+        }
+
+        /* --- FEATURES GRID --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* --- HEROES GRID --- */
+        .heroes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .hero-class-card {
+            background: linear-gradient(180deg, var(--card-bg) 0%, rgba(22, 21, 43, 0.4) 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .hero-class-card:hover {
+            border-color: var(--accent);
+            transform: scale(1.03);
+        }
+
+        .hero-class-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .hero-class-card h4 {
+            font-family: var(--pixel-font);
+            font-size: 0.85rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .hero-class-card p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* --- PLAYTEST BOX --- */
+        .playtest-box {
+            background: linear-gradient(135deg, #1b1836 0%, #0d0c1c 100%);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.15);
+        }
+
+        .playtest-form {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            max-width: 500px;
+            margin: 30px auto 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .playtest-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 16px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--card-border);
+            background: #0b0914;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .playtest-form input[type="email"]:focus {
+            border-color: var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #06050c;
+            padding: 40px 8%;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .game-title { font-size: 1.8rem; }
+            .playtest-form { flex-direction: column; }
+            .playtest-form input[type="email"], .btn-pixel-primary { width: 100%; justify-content: center; }
+            nav { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO / BANNER PRINCIPAL -->
+    <header class="hero-banner">
+        <nav>
+            <a href="index.html" class="btn-back" id="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Studio
+            </a>
+            
+            <div class="nav-right">
+                <div class="lang-switcher">
+                    <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+                    <button class="lang-btn" onclick="setLanguage('pt')">PT</button>
+                </div>
+                <div class="status-badge" id="status-badge">
+                    <div class="pulse-dot"></div> PLAYTEST / IN DEVELOPMENT
+                </div>
+            </div>
+        </nav>
+
+        <div class="hero-title-container">
+            <h1 class="game-title">B.E PIXEL HEROES</h1>
+            <p class="game-subtitle" id="game-subtitle">
+                A turn-based tactical RPG with nostalgic pixel art, strategic combat, deep dungeons, and unique heroes to discover.
+            </p>
+            <div class="cta-buttons">
+                <a href="#join-beta" class="btn-pixel-primary" id="btn-cta-beta">
+                    <i class="fas fa-gamepad"></i> JOIN PLAYTEST
+                </a>
+                <a href="https://ko-fi.com/eycodev" target="_blank" class="btn-secondary" id="btn-cta-support">
+                    <i class="fas fa-coffee"></i> Support Project
+                </a>
+            </div>
+        </div>
+
+        <div></div>
+    </header>
+
+    <!-- CARACTERÍSTICAS DEL JUEGO -->
+    <section class="container">
+        <div class="section-heading">
+            <h2 id="sec-feat-title">KEY FEATURES</h2>
+            <p id="sec-feat-sub">What awaits you in the realm of B.E Pixel Heroes</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-chess-board feature-icon"></i>
+                <h3 id="feat1-title">Tactical Combat</h3>
+                <p id="feat1-desc">Plan every turn-based action. Combine hero synergies and unique skills to conquer challenging bosses.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-paint-brush feature-icon"></i>
+                <h3 id="feat2-title">Detailed Pixel Art</h3>
+                <p id="feat2-desc">Handcrafted retro aesthetics with classic animations and cozy lighting evoking the 16-bit golden era.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-dungeon feature-icon"></i>
+                <h3 id="feat3-title">Zones & Dungeons</h3>
+                <p id="feat3-desc">Explore mysterious forests, ancient castles, and unique zones filled with secrets and treasures.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HÉROES Y CLASES -->
+    <section class="container" style="padding-top: 0;">
+        <div class="section-heading">
+            <h2 id="sec-hero-title">HERO ROSTER</h2>
+            <p id="sec-hero-sub">Meet the brave adventurers ready to lead your squad</p>
+        </div>
+
+        <div class="heroes-grid">
+            <div class="hero-class-card">
+                <i class="fas fa-shield-alt"></i>
+                <h4 id="class-knight-title">KNIGHT</h4>
+                <p id="class-knight-desc">Unshakeable defense and high resilience in frontline combat.</p>
+            </div>
+            <div class="hero-class-card">
+                <i class="fas fa-bow-arrow"></i>
+                <h4 id="class-archer-title">ARCHER</h4>
+                <p id="class-archer-desc">Deadly long-range precision and high agility.</p>
+            </div>
+            <div class="hero-class-card">
+                <i class="fas fa-hat-wizard"></i>
+                <h4 id="class-mage-title">MAGE</h4>
+                <p id="class-mage-desc">Powerful area-of-effect spells to control the battlefield.</p>
+            </div>
+            <div class="hero-class-card">
+                <i class="fas fa-ankh"></i>
+                <h4 id="class-cleric-title">CLERIC</h4>
+                <p id="class-cleric-desc">Essential support and healing blessings for the party.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRO BETA / PLAYTEST -->
+    <section class="container" id="join-beta">
+        <div class="playtest-box">
+            <h2 id="playtest-title" style="font-family: var(--pixel-font); color: var(--primary); margin-bottom: 15px; font-size: 1.3rem;">
+                TEST THE GAME BEFORE ANYONE ELSE!
+            </h2>
+            <p id="playtest-desc" style="color: var(--text-dim); max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                We are looking for passionate players to help us test early builds, provide feedback, and balance combat.
+            </p>
+
+            <form class="playtest-form" onsubmit="handleSubscribe(event)">
+                <input type="email" id="tester-email" placeholder="Enter your email..." required>
+                <button type="submit" class="btn-pixel-primary" id="btn-submit-playtest">REQUEST ACCESS</button>
+            </form>
+            <p id="form-msg" style="margin-top: 15px; color: var(--accent); display: none; font-weight: bold;"></p>
+
+            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
+                <a href="https://www.instagram.com/eyco_dev/" target="_blank" id="link-devlog" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem;">
+                    <i class="fab fa-instagram"></i> Follow the Devlog on Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p id="footer-copy">&copy; 2026 21YM Studio. Crafted with passion for retro RPG fans.</p>
+        <p style="margin-top: 10px;"><a href="index.html" id="footer-back">← Back to 21YM Studio Home</a></p>
+    </footer>
+
+    <!-- SCRIPT DE TRADUCCIÓN EN VIVO -->
+    <script>
+        const translations = {
+            en: {
+                btnBack: '<i class="fas fa-arrow-left"></i> Back to Studio',
+                badge: '<div class="pulse-dot"></div> PLAYTEST / IN DEVELOPMENT',
+                subtitle: "A turn-based tactical RPG with nostalgic pixel art, strategic combat, deep dungeons, and unique heroes to discover.",
+                ctaBeta: '<i class="fas fa-gamepad"></i> JOIN PLAYTEST',
+                ctaSupport: '<i class="fas fa-coffee"></i> Support Project',
+                
+                secFeatT: "KEY FEATURES",
+                secFeatS: "What awaits you in the realm of B.E Pixel Heroes",
+                f1T: "Tactical Combat", f1D: "Plan every turn-based action. Combine hero synergies and unique skills to conquer challenging bosses.",
+                f2T: "Detailed Pixel Art", f2D: "Handcrafted retro aesthetics with classic animations and cozy lighting evoking the 16-bit golden era.",
+                f3T: "Zones & Dungeons", f3D: "Explore mysterious forests, ancient castles, and unique zones filled with secrets and treasures.",
+
+                secHeroT: "HERO ROSTER",
+                secHeroS: "Meet the brave adventurers ready to lead your squad",
+                cKnightT: "KNIGHT", cKnightD: "Unshakeable defense and high resilience in frontline combat.",
+                cArcherT: "ARCHER", cArcherD: "Deadly long-range precision and high agility.",
+                cMageT: "MAGE", cMageD: "Powerful area-of-effect spells to control the battlefield.",
+                cClericT: "CLERIC", cClericD: "Essential support and healing blessings for the party.",
+
+                playT: "TEST THE GAME BEFORE ANYONE ELSE!",
+                playD: "We are looking for passionate players to help us test early builds, provide feedback, and balance combat.",
+                emailPlaceholder: "Enter your email...",
+                btnSubmit: "REQUEST ACCESS",
+                linkDevlog: '<i class="fab fa-instagram"></i> Follow the Devlog on Instagram',
+                msgSuccess: "Thank you! You have been added to our priority tester list.",
+                footerCopy: "&copy; 2026 21YM Studio. Crafted with passion for retro RPG fans.",
+                footerBack: "← Back to 21YM Studio Home"
+            },
+            es: {
+                btnBack: '<i class="fas fa-arrow-left"></i> Volver al Estudio',
+                badge: '<div class="pulse-dot"></div> PLAYTEST / EN DESARROLLO',
+                subtitle: "Un RPG táctico por turnos con arte píxel nostálgico, combates estratégicos, mazmorras profundas y héroes únicos por descubrir.",
+                ctaBeta: '<i class="fas fa-gamepad"></i> UNIRME AL PLAYTEST',
+                ctaSupport: '<i class="fas fa-coffee"></i> Apoyar Proyecto',
+                
+                secFeatT: "CARACTERÍSTICAS CLAVE",
+                secFeatS: "Lo que te espera en el reino de B.E Pixel Heroes",
+                f1T: "Combate Táctico", f1D: "Planifica cada movimiento por turnos. Sincroniza habilidades únicas para vencer a jefes desafiantes.",
+                f2T: "Pixel Art Detallado", f2D: "Estética retro elaborada a mano con animaciones clásicas que evocan la época dorada de los 16-bit.",
+                f3T: "Zonas y Mazmorras", f3D: "Explora bosques misteriosos, castillos antiguos y zonas repletas de tesoros y secretos.",
+
+                secHeroT: "EQUIPO DE HÉROES",
+                secHeroS: "Conoce a los valientes aventureros listos para liderar tu escuadrón",
+                cKnightT: "CABALLERO", cKnightD: "Defensa inquebrantable y gran resistencia en la vanguardia.",
+                cArcherT: "ARQUERA", cArcherD: "Ataques a distancia precisos y alta movilidad.",
+                cMageT: "MAGO", cMageD: "Poderosos hechizos de área para controlar el campo de batalla.",
+                cClericT: "CLÉRIGO", cClericD: "Soporte vital y bendiciones de sanación para el equipo.",
+
+                playT: "¡PRUEBA EL JUEGO ANTES QUE NADIE!",
+                playD: "Buscamos jugadores apasionados que nos ayuden a probar versiones tempranas y equilibrar el combate.",
+                emailPlaceholder: "Tu correo electrónico...",
+                btnSubmit: "SOLICITAR ACCESO",
+                linkDevlog: '<i class="fab fa-instagram"></i> Sigue el Devlog en Instagram',
+                msgSuccess: "¡Gracias! Te hemos añadido a la lista de testers prioritarios.",
+                footerCopy: "&copy; 2026 21YM Studio. Desarrollado con pasión para fans de los RPGs retro.",
+                footerBack: "← Volver a la página principal de 21YM Studio"
+            },
+            pt: {
+                btnBack: '<i class="fas fa-arrow-left"></i> Voltar al Estúdio',
+                badge: '<div class="pulse-dot"></div> PLAYTEST / EM DESENVOLVIMENTO',
+                subtitle: "Um RPG tático por turnos com arte pixel nostálgica, combate estratégico, masmorras profundas e heróis únicos.",
+                ctaBeta: '<i class="fas fa-gamepad"></i> ENTRAR NO PLAYTEST',
+                ctaSupport: '<i class="fas fa-coffee"></i> Apoiar Projeto',
+                
+                secFeatT: "RECURSOS PRINCIPAIS",
+                secFeatS: "O que te espera no reino de B.E Pixel Heroes",
+                f1T: "Combate Tático", f1D: "Planeje cada ação por turnos. Combine habilidades para derrotar chefes desafiadores.",
+                f2T: "Pixel Art Detalhado", f2D: "Estética retro feita à mão com animações clássicas evocando a era dos 16-bit.",
+                f3T: "Zonas e Masmorras", f3D: "Explore florestas misteriosas, castelos antigos e zonas cheias de segredos e tesouros.",
+
+                secHeroT: "ELENCO DE HERÓIS",
+                secHeroS: "Conheça os bravos aventureiros prontos para liderar seu esquadrão",
+                cKnightT: "CAVALEIRO", cKnightD: "Defesa inabalável e grande resistência na linha de frente.",
+                cArcherT: "ARQUEIRA", cArcherD: "Ataques à distância precisos e alta agilidade.",
+                cMageT: "MAGO", cMageD: "Poderosos feitiços de área para controlar o campo de batalha.",
+                cClericT: "CLÉRIGO", cClericD: "Suporte vital e bênçãos de cura para a equipe.",
+
+                playT: "TESTE O JOGO ANTES DE TODO MUNDO!",
+                playD: "Estamos procurando jogadores apaixonados para testar versões iniciais e ajudar a equilibrar o combate.",
+                emailPlaceholder: "Seu e-mail...",
+                btnSubmit: "SOLICITAR ACESSO",
+                linkDevlog: '<i class="fab fa-instagram"></i> Siga o Devlog no Instagram',
+                msgSuccess: "Obrigado! Você foi adicionado à nossa lista de testes prioritários.",
+                footerCopy: "&copy; 2026 21YM Studio. Criado com paixão para fãs de RPGs retro.",
+                footerBack: "← Voltar para a página principal"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+
+            document.getElementById('btn-back').innerHTML = t.btnBack;
+            document.getElementById('status-badge').innerHTML = t.badge;
+            document.getElementById('game-subtitle').innerText = t.subtitle;
+            document.getElementById('btn-cta-beta').innerHTML = t.ctaBeta;
+            document.getElementById('btn-cta-support').innerHTML = t.ctaSupport;
+
+            document.getElementById('sec-feat-title').innerText = t.secFeatT;
+            document.getElementById('sec-feat-sub').innerText = t.secFeatS;
+            document.getElementById('feat1-title').innerText = t.f1T;
+            document.getElementById('feat1-desc').innerText = t.f1D;
+            document.getElementById('feat2-title').innerText = t.f2T;
+            document.getElementById('feat2-desc').innerText = t.f2D;
+            document.getElementById('feat3-title').innerText = t.f3T;
+            document.getElementById('feat3-desc').innerText = t.f3D;
+
+            document.getElementById('sec-hero-title').innerText = t.secHeroT;
+            document.getElementById('sec-hero-sub').innerText = t.secHeroS;
+            document.getElementById('class-knight-title').innerText = t.cKnightT;
+            document.getElementById('class-knight-desc').innerText = t.cKnightD;
+            document.getElementById('class-archer-title').innerText = t.cArcherT;
+            document.getElementById('class-archer-desc').innerText = t.cArcherD;
+            document.getElementById('class-mage-title').innerText = t.cMageT;
+            document.getElementById('class-mage-desc').innerText = t.cMageD;
+            document.getElementById('class-cleric-title').innerText = t.cClericT;
+            document.getElementById('class-cleric-desc').innerText = t.cClericD;
+
+            document.getElementById('playtest-title').innerText = t.playT;
+            document.getElementById('playtest-desc').innerText = t.playD;
+            document.getElementById('tester-email').placeholder = t.emailPlaceholder;
+            document.getElementById('btn-submit-playtest').innerText = t.btnSubmit;
+            document.getElementById('link-devlog').innerHTML = t.linkDevlog;
+
+            document.getElementById('footer-copy').innerHTML = t.footerCopy;
+            document.getElementById('footer-back').innerText = t.footerBack;
+
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(b => {
+                if(b.innerText.toLowerCase() === lang) b.classList.add('active');
+            });
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const email = document.getElementById('tester-email').value;
+            const msg = document.getElementById('form-msg');
+            
+            if(email) {
+                msg.innerText = translations[currentLang].msgSuccess;
+                msg.style.display = "block";
+                document.getElementById('tester-email').value = "";
+            }
+        }
+
+        window.onload = () => {
+            const userLang = navigator.language.substring(0, 2);
+            if (translations[userLang]) setLanguage(userLang);
+            else setLanguage('en');
+        };
+    </script>
+</body>
+</html>
