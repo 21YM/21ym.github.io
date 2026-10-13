@@ -186,7 +186,8 @@
             transition: all 0.1s ease;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-align: center;
         }
 
         .btn-pixel-primary:hover {
@@ -332,29 +333,10 @@
             box-shadow: 0 0 30px rgba(251, 191, 36, 0.15);
         }
 
-        .playtest-form {
+        .playtest-action {
+            margin-top: 30px;
             display: flex;
             justify-content: center;
-            gap: 15px;
-            max-width: 500px;
-            margin: 30px auto 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .playtest-form input[type="email"] {
-            flex: 1;
-            min-width: 250px;
-            padding: 16px 20px;
-            border-radius: 6px;
-            border: 1px solid var(--card-border);
-            background: #0b0914;
-            color: #fff;
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        .playtest-form input[type="email"]:focus {
-            border-color: var(--primary);
         }
 
         /* --- FOOTER --- */
@@ -374,8 +356,7 @@
 
         @media (max-width: 768px) {
             .game-title { font-size: 1.8rem; }
-            .playtest-form { flex-direction: column; }
-            .playtest-form input[type="email"], .btn-pixel-primary { width: 100%; justify-content: center; }
+            .btn-pixel-primary { width: 100%; justify-content: center; font-size: 0.75rem; padding: 16px 20px; }
             nav { justify-content: center; }
         }
     </style>
@@ -430,7 +411,7 @@
             <div class="feature-card">
                 <i class="fas fa-bolt feature-icon"></i>
                 <h3 id="feat1-title">Idle Combat</h3>
-                <p id="feat1-desc">Cooldown reduction (CD) is nerfed in idle mode to reward active play while keeping progression smooth.</p>
+                <p id="feat1-desc">Cooldown reduction (CD) is nerfed in idle mode to encourage active play while keeping progression smooth.</p>
             </div>
 
             <div class="feature-card">
@@ -461,7 +442,6 @@
                 <p id="class-knight-desc">Unshakeable defense and high resilience in frontline combat.</p>
             </div>
             <div class="hero-class-card">
-                <!-- Icono arreglado de la arquera usando diana / crosshairs -->
                 <i class="fas fa-crosshairs"></i>
                 <h4 id="class-archer-title">ARCHER</h4>
                 <p id="class-archer-desc">Deadly long-range precision and high agility.</p>
@@ -479,23 +459,23 @@
         </div>
     </section>
 
-    <!-- REGISTRO BETA / PLAYTEST -->
+    <!-- REGISTRO BETA / ACCESO A GOOGLE GROUP TESTERS -->
     <section class="container" id="join-beta">
         <div class="playtest-box">
             <h2 id="playtest-title" style="font-family: var(--pixel-font); color: var(--primary); margin-bottom: 15px; font-size: 1.3rem;">
                 TEST THE GAME BEFORE ANYONE ELSE!
             </h2>
             <p id="playtest-desc" style="color: var(--text-dim); max-width: 600px; margin: 0 auto; line-height: 1.6;">
-                We are looking for passionate players to help us test early builds, provide feedback, and balance combat.
+                Join our official Google Testers group to get immediate access to early testing builds and help us balance the game.
             </p>
 
-            <form class="playtest-form" onsubmit="handleSubscribe(event)">
-                <input type="email" id="tester-email" placeholder="Enter your email..." required>
-                <button type="submit" class="btn-pixel-primary" id="btn-submit-playtest">REQUEST ACCESS</button>
-            </form>
-            <p id="form-msg" style="margin-top: 15px; color: var(--accent); display: none; font-weight: bold;"></p>
+            <div class="playtest-action">
+                <a href="https://groups.google.com/g/ym21studio-testers" target="_blank" class="btn-pixel-primary" id="btn-group-testers">
+                    <i class="fab fa-google"></i> <span id="btn-group-text">JOIN GOOGLE TESTERS GROUP</span>
+                </a>
+            </div>
 
-            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
+            <div style="margin-top: 35px; display: flex; justify-content: center; gap: 20px;">
                 <a href="https://www.instagram.com/eyco_dev/" target="_blank" id="link-devlog" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem;">
                     <i class="fab fa-instagram"></i> Follow the Devlog on Instagram
                 </a>
@@ -533,11 +513,9 @@
                 cClericT: "CLERIC", cClericD: "Essential support and healing blessings for the party.",
 
                 playT: "TEST THE GAME BEFORE ANYONE ELSE!",
-                playD: "We are looking for passionate players to help us test early builds, provide feedback, and balance combat.",
-                emailPlaceholder: "Enter your email...",
-                btnSubmit: "REQUEST ACCESS",
+                playD: "Join our official Google Testers group to get immediate access to early testing builds and help us balance the game.",
+                btnGroupText: "JOIN GOOGLE TESTERS GROUP",
                 linkDevlog: '<i class="fab fa-instagram"></i> Follow the Devlog on Instagram',
-                msgSuccess: "Thank you! You have been added to our priority tester list.",
                 footerCopy: "&copy; 2026 21YM Studio. Crafted with passion for retro RPG fans.",
                 footerBack: "← Back to 21YM Studio Home"
             },
@@ -562,11 +540,9 @@
                 cClericT: "CLÉRIGO", cClericD: "Soporte vital y bendiciones de sanación para el equipo.",
 
                 playT: "¡PRUEBA EL JUEGO ANTES QUE NADIE!",
-                playD: "Buscamos jugadores apasionados que nos ayuden a probar versiones tempranas y equilibrar el combate.",
-                emailPlaceholder: "Tu correo electrónico...",
-                btnSubmit: "SOLICITAR ACCESO",
+                playD: "Únete a nuestro grupo oficial de Google Testers para acceder a las versiones de prueba y ayudarnos a probar el juego.",
+                btnGroupText: "UNIRME AL GRUPO DE TESTERS",
                 linkDevlog: '<i class="fab fa-instagram"></i> Sigue el Devlog en Instagram',
-                msgSuccess: "¡Gracias! Te hemos añadido a la lista de testers prioritarios.",
                 footerCopy: "&copy; 2026 21YM Studio. Desarrollado con pasión para fans de los RPGs retro.",
                 footerBack: "← Volver a la página principal de 21YM Studio"
             },
@@ -591,20 +567,15 @@
                 cClericT: "CLÉRIGO", cClericD: "Suporte vital e bênçãos de cura para a equipe.",
 
                 playT: "TESTE O JOGO ANTES DE TODO MUNDO!",
-                playD: "Estamos procurando jogadores apaixonados para testar versões iniciais e ajudar a equilibrar o combate.",
-                emailPlaceholder: "Seu e-mail...",
-                btnSubmit: "SOLICITAR ACESSO",
+                playD: "Junte-se ao nosso grupo oficial de Google Testers para obter acesso antecipado às versões de teste.",
+                btnGroupText: "ENTRAR NO GRUPO DE TESTES",
                 linkDevlog: '<i class="fab fa-instagram"></i> Siga o Devlog no Instagram',
-                msgSuccess: "Obrigado! Você foi adicionado à nossa lista de testes prioritários.",
                 footerCopy: "&copy; 2026 21YM Studio. Criado com paixão para fãs de RPGs retro.",
                 footerBack: "← Voltar para a página principal"
             }
         };
 
-        let currentLang = 'en';
-
         function setLanguage(lang) {
-            currentLang = lang;
             const t = translations[lang];
 
             document.getElementById('btn-back').innerHTML = t.btnBack;
@@ -635,8 +606,7 @@
 
             document.getElementById('playtest-title').innerText = t.playT;
             document.getElementById('playtest-desc').innerText = t.playD;
-            document.getElementById('tester-email').placeholder = t.emailPlaceholder;
-            document.getElementById('btn-submit-playtest').innerText = t.btnSubmit;
+            document.getElementById('btn-group-text').innerText = t.btnGroupText;
             document.getElementById('link-devlog').innerHTML = t.linkDevlog;
 
             document.getElementById('footer-copy').innerHTML = t.footerCopy;
@@ -646,18 +616,6 @@
             document.querySelectorAll('.lang-btn').forEach(b => {
                 if(b.innerText.toLowerCase() === lang) b.classList.add('active');
             });
-        }
-
-        function handleSubscribe(e) {
-            e.preventDefault();
-            const email = document.getElementById('tester-email').value;
-            const msg = document.getElementById('form-msg');
-            
-            if(email) {
-                msg.innerText = translations[currentLang].msgSuccess;
-                msg.style.display = "block";
-                document.getElementById('tester-email').value = "";
-            }
         }
 
         window.onload = () => {
