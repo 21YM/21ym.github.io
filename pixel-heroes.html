@@ -222,6 +222,36 @@
             background: rgba(0, 255, 163, 0.05);
         }
 
+        /* Botón alternativo para el paso 2 (estilo neón/accent) */
+        .btn-pixel-accent {
+            background: var(--accent);
+            color: #000;
+            font-family: var(--pixel-font);
+            font-size: 0.85rem;
+            padding: 18px 30px;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #00995c, 0 10px 20px rgba(0, 255, 163, 0.3);
+            transition: all 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .btn-pixel-accent:hover {
+            background: #33ffb3;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #00995c, 0 12px 25px rgba(0, 255, 163, 0.4);
+        }
+
+        .btn-pixel-accent:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #00995c;
+        }
+
         /* --- SECTIONS --- */
         .container {
             padding: 80px 8%;
@@ -333,10 +363,31 @@
             box-shadow: 0 0 30px rgba(251, 191, 36, 0.15);
         }
 
-        .playtest-action {
-            margin-top: 30px;
+        .playtest-steps {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 35px;
+            align-items: center;
+        }
+
+        .step-card {
+            background: rgba(22, 21, 43, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .step-title {
+            font-family: var(--pixel-font);
+            font-size: 0.85rem;
+            color: var(--primary);
         }
 
         /* --- FOOTER --- */
@@ -356,7 +407,7 @@
 
         @media (max-width: 768px) {
             .game-title { font-size: 1.8rem; }
-            .btn-pixel-primary { width: 100%; justify-content: center; font-size: 0.75rem; padding: 16px 20px; }
+            .btn-pixel-primary, .btn-pixel-accent { width: 100%; justify-content: center; font-size: 0.75rem; padding: 16px 20px; }
             nav { justify-content: center; }
         }
     </style>
@@ -391,8 +442,8 @@
                 <a href="#join-beta" class="btn-pixel-primary" id="btn-cta-beta">
                     <i class="fas fa-gamepad"></i> JOIN PLAYTEST
                 </a>
-                <a href="https://ko-fi.com/eycodev" target="_blank" class="btn-secondary" id="btn-cta-support">
-                    <i class="fas fa-coffee"></i> Support Project
+                <a href="https://ym21studio.itch.io/be-pixel-heroes" target="_blank" class="btn-secondary" id="btn-cta-support">
+                    <i class="fab fa-itch-io"></i> Follow Devlog
                 </a>
             </div>
         </div>
@@ -459,20 +510,35 @@
         </div>
     </section>
 
-    <!-- REGISTRO BETA / ACCESO A GOOGLE GROUP TESTERS -->
+    <!-- REGISTRO BETA / PASO 1 Y PASO 2 -->
     <section class="container" id="join-beta">
         <div class="playtest-box">
             <h2 id="playtest-title" style="font-family: var(--pixel-font); color: var(--primary); margin-bottom: 15px; font-size: 1.3rem;">
                 TEST THE GAME BEFORE ANYONE ELSE!
             </h2>
             <p id="playtest-desc" style="color: var(--text-dim); max-width: 600px; margin: 0 auto; line-height: 1.6;">
-                Join our official Google Testers group to get immediate access to early testing builds and help us balance the game.
+                Follow these two simple steps to get access to early builds and join our playtest.
             </p>
 
-            <div class="playtest-action">
-                <a href="https://groups.google.com/g/ym21studio-testers" target="_blank" class="btn-pixel-primary" id="btn-group-testers">
-                    <i class="fab fa-google"></i> <span id="btn-group-text">JOIN GOOGLE TESTERS GROUP</span>
-                </a>
+            <div class="playtest-steps">
+                <!-- PASO 1 -->
+                <div class="step-card">
+                    <span class="step-title" id="step1-title">STEP 1: JOIN THE TESTERS GROUP</span>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;" id="step1-desc">You must join this Google group first so your account is authorized to download the game.</p>
+                    <a href="https://groups.google.com/g/ym21studio-testers" target="_blank" class="btn-pixel-primary" id="btn-group-testers">
+                        <i class="fab fa-google"></i> <span id="btn-group-text">JOIN GOOGLE TESTERS GROUP</span>
+                    </a>
+                </div>
+
+                <!-- PASO 2 -->
+                <div class="step-card">
+                    <span class="step-title" id="step2-title">STEP 2: DOWNLOAD & PLAY THE GAME</span>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;" id="step2-desc">Once registered in the group, access the official testing link to install the game.</p>
+                    <!-- Reemplaza el '#' del href con tu enlace oficial de Google Console / Play Console cuando lo tengas -->
+                    <a href="#" target="_blank" class="btn-pixel-accent" id="btn-play-game">
+                        <i class="fas fa-download"></i> <span id="btn-play-text">ACCESS GAME TEST BUILD</span>
+                    </a>
+                </div>
             </div>
 
             <div style="margin-top: 35px; display: flex; justify-content: center; gap: 20px;">
@@ -497,7 +563,7 @@
                 badge: '<div class="pulse-dot"></div> PLAYTEST / IN DEVELOPMENT',
                 subtitle: "An online pixel-art RPG with active idle combat, multiplayer progression, deep dungeons, raids, and world bosses to conquer.",
                 ctaBeta: '<i class="fas fa-gamepad"></i> JOIN PLAYTEST',
-                ctaSupport: '<i class="fas fa-coffee"></i> Support Project',
+                ctaSupport: '<i class="fab fa-itch-io"></i> Follow Devlog',
                 
                 secFeatT: "KEY FEATURES",
                 secFeatS: "What awaits you in the realm of B.E Pixel Heroes",
@@ -513,8 +579,13 @@
                 cClericT: "CLERIC", cClericD: "Essential support and healing blessings for the party.",
 
                 playT: "TEST THE GAME BEFORE ANYONE ELSE!",
-                playD: "Join our official Google Testers group to get immediate access to early testing builds and help us balance the game.",
+                playD: "Follow these two simple steps to get access to early builds and join our playtest.",
+                step1Title: "STEP 1: JOIN THE TESTERS GROUP",
+                step1Desc: "You must join this Google group first so your account is authorized to download the game.",
                 btnGroupText: "JOIN GOOGLE TESTERS GROUP",
+                step2Title: "STEP 2: DOWNLOAD & PLAY THE GAME",
+                step2Desc: "Once registered in the group, access the official testing link to install the game.",
+                btnPlayText: "ACCESS GAME TEST BUILD",
                 linkDevlog: '<i class="fab fa-itch-io"></i> Follow the Devlog on Itch.io',
                 footerCopy: "&copy; 2026 21YM Studio. Crafted with passion for retro RPG fans.",
                 footerBack: "← Back to 21YM Studio Home"
@@ -524,7 +595,7 @@
                 badge: '<div class="pulse-dot"></div> PLAYTEST / EN DESARROLLO',
                 subtitle: "Un RPG online pixel art con combate idle activo, progreso multijugador, mazmorras profundas, raids y jefes mundiales.",
                 ctaBeta: '<i class="fas fa-gamepad"></i> UNIRME AL PLAYTEST',
-                ctaSupport: '<i class="fas fa-coffee"></i> Apoyar Proyecto',
+                ctaSupport: '<i class="fab fa-itch-io"></i> Seguir Devlog',
                 
                 secFeatT: "CARACTERÍSTICAS CLAVE",
                 secFeatS: "Lo que te espera en el reino de B.E Pixel Heroes",
@@ -540,8 +611,13 @@
                 cClericT: "CLÉRIGO", cClericD: "Soporte vital y bendiciones de sanación para el equipo.",
 
                 playT: "¡PRUEBA EL JUEGO ANTES QUE NADIE!",
-                playD: "Únete a nuestro grupo oficial de Google Testers para acceder a las versiones de prueba y ayudarnos a probar el juego.",
+                playD: "Sigue estos dos sencillos pasos para obtener acceso a las versiones de prueba y unirte al playtest.",
+                step1Title: "PASO 1: ÚNETE AL GRUPO DE TESTERS",
+                step1Desc: "Debes unirte primero a este grupo de Google para que tu cuenta esté autorizada para descargar el juego.",
                 btnGroupText: "UNIRME AL GRUPO DE TESTERS",
+                step2Title: "PASO 2: DESCARGA Y PRUEBA EL JUEGO",
+                step2Desc: "Una vez registrado en el grupo, accede al enlace oficial de pruebas para instalar el juego.",
+                btnPlayText: "ACCEDER A LA VERSIÓN DE TEST",
                 linkDevlog: '<i class="fab fa-itch-io"></i> Sigue el Devlog en Itch.io',
                 footerCopy: "&copy; 2026 21YM Studio. Desarrollado con pasión para fans de los RPGs retro.",
                 footerBack: "← Volver a la página principal de 21YM Studio"
@@ -551,7 +627,7 @@
                 badge: '<div class="pulse-dot"></div> PLAYTEST / EM DESENVOLVIMENTO',
                 subtitle: "Um RPG online em pixel art com combate idle ativo, progresso multijogador, masmorras profundas, raids e chefes mundiais.",
                 ctaBeta: '<i class="fas fa-gamepad"></i> ENTRAR NO PLAYTEST',
-                ctaSupport: '<i class="fas fa-coffee"></i> Apoiar Projeto',
+                ctaSupport: '<i class="fab fa-itch-io"></i> Seguir Devlog',
                 
                 secFeatT: "RECURSOS PRINCIPAIS",
                 secFeatS: "O que te espera no reino de B.E Pixel Heroes",
@@ -567,8 +643,13 @@
                 cClericT: "CLÉRIGO", cClericD: "Suporte vital e bênçãos de cura para a equipe.",
 
                 playT: "TESTE O JOGO ANTES DE TODO MUNDO!",
-                playD: "Junte-se ao nosso grupo oficial de Google Testers para obter acesso antecipado às versões de teste.",
+                playD: "Siga estes dois passos simples para obter acesso às versões de teste e participar do playtest.",
+                step1Title: "PASSO 1: ENTRE NO GRUPO DE TESTES",
+                step1Desc: "Você precisa entrar neste grupo do Google primeiro para que sua conta seja autorizada a baixar o jogo.",
                 btnGroupText: "ENTRAR NO GRUPO DE TESTES",
+                step2Title: "PASSO 2: BAIXE E JOGUE",
+                step2Desc: "Uma vez registrado no grupo, acesse o link oficial de testes para instalar o jogo.",
+                btnPlayText: "ACESSAR VERSÃO DE TESTE",
                 linkDevlog: '<i class="fab fa-itch-io"></i> Siga o Devlog no Itch.io',
                 footerCopy: "&copy; 2026 21YM Studio. Criado com paixão para fãs de RPGs retro.",
                 footerBack: "← Voltar para a página principal"
@@ -606,7 +687,12 @@
 
             document.getElementById('playtest-title').innerText = t.playT;
             document.getElementById('playtest-desc').innerText = t.playD;
+            document.getElementById('step1-title').innerText = t.step1Title;
+            document.getElementById('step1-desc').innerText = t.step1Desc;
             document.getElementById('btn-group-text').innerText = t.btnGroupText;
+            document.getElementById('step2-title').innerText = t.step2Title;
+            document.getElementById('step2-desc').innerText = t.step2Desc;
+            document.getElementById('btn-play-text').innerText = t.btnPlayText;
             document.getElementById('link-devlog').innerHTML = t.linkDevlog;
 
             document.getElementById('footer-copy').innerHTML = t.footerCopy;
