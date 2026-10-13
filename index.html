@@ -65,13 +65,13 @@
         /* --- PROJECTS --- */
         .section { padding: 80px 8%; }
         .section-title { font-family: 'Oswald', sans-serif; font-size: 2.5rem; margin-bottom: 40px; text-transform: uppercase; border-left: 4px solid var(--primary); padding-left: 20px; }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
         .project-card { 
             position: relative;
             background: var(--card-bg); 
             border-radius: 15px; 
-            padding: 20px; 
+            padding: 30px 25px; /* Más espacio interno superior e inferior */
             text-decoration: none; 
             color: white; 
             border: 1px solid rgba(255,255,255,0.05); 
@@ -80,10 +80,10 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            min-height: 220px;
+            min-height: 380px; /* Aumentado de 220px a 380px para mayor altura */
         }
 
-        /* CAPA DE FONTE (Banner) */
+        /* CAPA DE FONDO (Banner) */
         .card-banner {
             position: absolute;
             top: 0;
@@ -103,12 +103,11 @@
             top: 0;
             left: 0;
             width: 100%;
-            /* Sobresale por abajo para asegurar cobertura total del borde redondeado */
             height: calc(100% + 5px); 
             background: linear-gradient(to top, 
-                rgba(0, 0, 0, 1) 5px,   /* Negro absoluto en la base */
-                rgba(0, 0, 0, 0.8) 40%, 
-                rgba(0, 0, 0, 0) 100%);
+                rgba(0, 0, 0, 1) 10px,   /* Negro absoluto en la base */
+                rgba(0, 0, 0, 0.7) 50%, 
+                rgba(0, 0, 0, 0.1) 100%);
             z-index: 1;
         }
 
@@ -116,9 +115,10 @@
         
         .project-card i { font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; position: relative; z-index: 2; }
         .project-card h3, .project-card p { position: relative; z-index: 2; margin: 3px 0; }
-        .project-card p { font-size: 0.9rem; color: var(--text-dim); }
+        .project-card h3 { font-size: 1.5rem; }
+        .project-card p { font-size: 0.95rem; color: var(--text-dim); }
         
-        .tag { position: relative; z-index: 2; display: inline-block; font-size: 0.7rem; font-weight: bold; padding: 5px 12px; border-radius: 20px; background: #334155; margin-top: 15px; width: fit-content; }
+        .tag { position: relative; z-index: 2; display: inline-block; font-size: 0.75rem; font-weight: bold; padding: 6px 14px; border-radius: 20px; background: #334155; margin-top: 15px; width: fit-content; }
 
         /* --- FOOTER --- */
         .social-footer { background: #050505; padding: 60px 8%; text-align: center; }
@@ -162,7 +162,7 @@
         <h2 class="section-title" id="sec-projects">Our Projects</h2>
         <div class="project-grid">
             
-            <!-- CARD ACTUALIZADA CON EL ENLACE A PLAY STORE -->
+            <!-- CARD 1: My Cozy Books -->
             <a href="https://play.google.com/store/apps/details?id=com.ym21.cozy_books" target="_blank" class="project-card">
                 <div class="card-banner" style="background-image: url('banner-cozy.png');"></div>
                 <h3 id="card-cozy-title">My Cozy Books</h3>
@@ -208,7 +208,7 @@
                 desc: "Crafting experiences from epic adventures to cozy apps.",
                 view: "VIEW OUR WORK", secProj: "Our Projects",
                 cozyT: "My Cozy Books", cozyD: "A minimalist library organizer and reading tracker.",
-                rpgT: "IN DEVELOPMENT RPG", rpgD: "An ambitious turn-based RPG featuring unique zones.",
+                rpgT: "B.E Pixel Heroes", rpgD: "An ambitious pixel-art turn-based RPG featuring iconic heroes and unique zones.",
                 beta: "BETA AVAILABLE", dev: "IN DEVELOPMENT", priv: "Privacy Policy"
             },
             es: {
@@ -217,7 +217,7 @@
                 desc: "Creando experiencias desde aventuras épicas hasta apps relajantes.",
                 view: "VER TRABAJOS", secProj: "Nuestros Proyectos",
                 cozyT: "My Cozy Books", cozyD: "Un organizador de lectura minimalista.",
-                rpgT: "EN DESARROLLO RPG", rpgD: "Un RPG por turnos con zonas únicas.",
+                rpgT: "B.E Pixel Heroes", rpgD: "Un ambicioso RPG de arte píxel por turnos con héroes icónicos.",
                 beta: "BETA DISPONIBLE", dev: "EN DESARROLLO", priv: "Política de Privacidad"
             },
             pt: {
@@ -226,7 +226,7 @@
                 desc: "Criando experiências de aventuras épicas a aplicativos aconchegantes.",
                 view: "VER TRABALHOS", secProj: "Nossos Projetos",
                 cozyT: "My Cozy Books", cozyD: "Um organizador de leitura minimalista.",
-                rpgT: "EM DESENVOLVIMENTO RPG", rpgD: "Um RPG por turnos com zonas únicas.",
+                rpgT: "B.E Pixel Heroes", rpgD: "Um RPG por turnos com arte pixel e zonas únicas.",
                 beta: "BETA DISPONÍVEL", dev: "EM DESENVOLVIMENTO", priv: "Política de Privacidade"
             }
         };
@@ -240,8 +240,8 @@
             document.getElementById('sec-projects').innerText = translations[lang].secProj;
             document.getElementById('card-cozy-title').innerText = translations[lang].cozyT;
             document.getElementById('card-cozy-desc').innerText = translations[lang].cozyD;
-            document.getElementById('card-rpg-title').innerText = translations[lang].rpgT;
-            document.getElementById('card-rpg-desc').innerText = translations[lang].rpgD;
+            document.getElementById('card-be-title').innerText = translations[lang].rpgT;
+            document.getElementById('card-be-desc').innerText = translations[lang].rpgD;
             document.getElementById('tag-beta').innerText = translations[lang].beta;
             document.getElementById('tag-dev').innerText = translations[lang].dev;
             document.getElementById('link-privacy').innerText = translations[lang].priv;
