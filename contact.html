@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Contact | YM21STUDIO</title>
+    
+    <link rel="icon" type="image/png" href="logo1.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { 
+            --primary: #00ffa3; 
+            --bg-dark: #0a0a0a; 
+            --card-bg: #161b22; 
+            --text-main: #ffffff; 
+            --text-dim: #a0a0a0; 
+        }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        .lang-bar { 
+            background: #111; 
+            padding: 10px 8%; 
+            display: flex; 
+            justify-content: flex-end; 
+            border-bottom: 1px solid #222; 
+        }
+        
+        .lang-btn { 
+            background: none; 
+            border: 1px solid #333; 
+            color: #666; 
+            padding: 4px 10px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            font-size: 0.7rem; 
+            margin-left: 10px; 
+            transition: 0.3s; 
+        }
+        
+        .lang-btn:hover, .lang-btn.active { 
+            border-color: var(--primary); 
+            color: var(--primary); 
+        }
+
+        nav { 
+            padding: 20px 8%; 
+            display: flex; 
+            align-items: center; 
+            background: rgba(0,0,0,0.8); 
+            border-bottom: 1px solid #1a1a1a;
+        }
+        
+        .logo-container { display: flex; align-items: center; text-decoration: none; gap: 12px; }
+        .logo-img { height: 40px; }
+        .logo-text { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 1.2rem; 
+            color: white; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+        
+        .container { max-width: 800px; margin: 60px auto; padding: 0 20px; min-height: 60vh; }
+        
+        h1 { font-family: 'Oswald', sans-serif; color: var(--primary); font-size: 2.5rem; text-transform: uppercase; margin-bottom: 10px; }
+        h2 { color: white; margin-top: 40px; font-size: 1.4rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        p, li { color: var(--text-dim); font-size: 1rem; }
+        
+        .support-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+        .support-card:hover {
+            border-color: var(--primary);
+        }
+        .support-card h3 { color: white; margin-top: 0; font-family: 'Oswald', sans-serif; font-size: 1.2rem; }
+        
+        .btn-mail {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: black;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 900;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .btn-mail:hover { opacity: 0.9; }
+
+        .footer { 
+            text-align: center; 
+            padding: 40px; 
+            font-size: 0.8rem; 
+            color: #444; 
+            border-top: 1px solid #222; 
+            margin-top: 50px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-bar">
+        <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+        <button class="lang-btn" onclick="setLanguage('pt')">PT</button>
+    </div>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo1.png" alt="Logo" class="logo-img">
+            <span class="logo-text">YM21STUDIO</span>
+        </a>
+    </nav>
+
+    <div class="container">
+        <h1 id="title">Support & Contact</h1>
+        <p id="intro">Need help with our games or apps like <strong>B.E. Pixel Hero</strong> or <strong>My Cozy Books</strong>? Choose an option below to get in touch with us.</p>
+        
+        <div class="support-card">
+            <h3 id="card1-title">📧 General Support & Questions</h3>
+            <p id="card1-desc">Have questions about gameplay, features, or need technical assistance? Send us an email.</p>
+            <a href="mailto:tu-correo@gmail.com?subject=Support%20Request%20-%20YM21Studio" class="btn-mail" id="btn1"><i class="fas fa-envelope"></i> Contact Support</a>
+        </div>
+
+        <div class="support-card">
+            <h3 id="card2-title">🗑️ Account & Data Deletion Request</h3>
+            <p id="card2-desc">If you want to permanently delete your account, cloud saves, and associated data managed via Firebase, click below to email our deletion request desk.</p>
+            <a href="mailto:tu-correo@gmail.com?subject=Account%20Deletion%20Request%20-%20YM21Studio" class="btn-mail" id="btn2"><i class="fas fa-trash-alt"></i> Request Account Deletion</a>
+        </div>
+
+        <div class="support-card">
+            <h3 id="card3-title">🐛 Bug Reports</h3>
+            <p id="card3-desc">Found a bug or glitch while playing? Let us know the details so we can fix it in the next update.</p>
+            <a href="mailto:tu-correo@gmail.com?subject=Bug%20Report%20-%20YM21Studio" class="btn-mail" id="btn3"><i class="fas fa-bug"></i> Report a Bug</a>
+        </div>
+    </div>
+
+    <div class="footer">© 2026 YM21STUDIO. All rights reserved.</div>
+
+    <script>
+        const translations = {
+            en: {
+                title: "Support & Contact",
+                intro: "Need help with our games or apps like <strong>B.E. Pixel Hero</strong> or <strong>My Cozy Books</strong>? Choose an option below to get in touch with us.",
+                card1Title: "📧 General Support & Questions",
+                card1Desc: "Have questions about gameplay, features, or need technical assistance? Send us an email.",
+                btn1: "Contact Support",
+                card2Title: "🗑️ Account & Data Deletion Request",
+                card2Desc: "If you want to permanently delete your account, cloud saves, and associated data managed via Firebase, click below to email our deletion request desk.",
+                btn2: "Request Account Deletion",
+                card3Title: "🐛 Bug Reports",
+                card3Desc: "Found a bug or glitch while playing? Let us know the details so we can fix it in the next update.",
+                btn3: "Report a Bug"
+            },
+            es: {
+                title: "Soporte y Contacto",
+                intro: "¿Necesitas ayuda con nuestros juegos o aplicaciones como <strong>B.E. Pixel Hero</strong> o <strong>My Cozy Books</strong>? Elige una opción abajo para ponerte en contacto con nosotros.",
+                card1Title: "📧 Soporte general y preguntas",
+                card1Desc: "¿Tienes dudas sobre la jugabilidad, funciones o necesitas asistencia técnica? Envíanos un correo.",
+                btn1: "Contactar Soporte",
+                card2Title: "🗑️ Solicitud de eliminación de cuenta y datos",
+                card2Desc: "Si deseas eliminar permanentemente tu cuenta, partidas en la nube y datos asociados gestionados en Firebase, haz clic abajo para solicitarnos el borrado.",
+                btn2: "Solicitar Borrado de Cuenta",
+                card3Title: "🐛 Informes de errores",
+                card3Desc: "¿Has encontrado un fallo o error mientras jugabas? Cuéntanos los detalles para solucionarlo en la próxima actualización.",
+                btn3: "Informar de un Error"
+            },
+            pt: {
+                title: "Suporte e Contato",
+                intro: "Precisa de ajuda com nossos jogos ou aplicativos como <strong>B.E. Pixel Hero</strong> ou <strong>My Cozy Books</strong>? Escolha uma opção abaixo para entrar em contato conosco.",
+                card1Title: "📧 Suporte Geral e Perguntas",
+                card1Desc: "Tem dúvidas sobre jogabilidade, recursos ou precisa de assistência técnica? Envie-nos um e-mail.",
+                btn1: "Contatar Suporte",
+                card2Title: "🗑️ Solicitação de Exclusão de Conta e Dados",
+                card2Desc: "Se você deseja excluir permanentemente sua conta, salvamentos na nuvem e dados associados gerenciados pelo Firebase, clique abaixo para solicitar a exclusão.",
+                btn2: "Solicitar Exclusão de Conta",
+                card3Title: "🐛 Relatórios de Erros",
+                card3Desc: "Encontrou um erro ou falha ao jogar? Conte-nos os detalhes para que possamos corrigi-lo na próxima atualização.",
+                btn3: "Relatar um Erro"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.getElementById('title').innerText = translations[lang].title;
+            document.getElementById('intro').innerHTML = translations[lang].intro;
+            document.getElementById('card1-title').innerText = translations[lang].card1Title;
+            document.getElementById('card1-desc').innerText = translations[lang].card1Desc;
+            document.getElementById('btn1').innerHTML = `<i class="fas fa-envelope"></i> ${translations[lang].btn1}`;
+            document.getElementById('card2-title').innerText = translations[lang].card2Title;
+            document.getElementById('card2-desc').innerText = translations[lang].card2Desc;
+            document.getElementById('btn2').innerHTML = `<i class="fas fa-trash-alt"></i> ${translations[lang].btn2}`;
+            document.getElementById('card3-title').innerText = translations[lang].card3Title;
+            document.getElementById('card3-desc').innerText = translations[lang].card3Desc;
+            document.getElementById('btn3').innerHTML = `<i class="fas fa-bug"></i> ${translations[lang].btn3}`;
+            
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            const btns = document.querySelectorAll('.lang-btn');
+            if(lang === 'en') btns[0].classList.add('active');
+            if(lang === 'es') btns[1].classList.add('active');
+            if(lang === 'pt') btns[2].classList.add('active');
+        }
+
+        window.onload = () => {
+            const userLang = navigator.language.substring(0, 2);
+            if (translations[userLang]) setLanguage(userLang);
+            else setLanguage('en');
+        };
+    </script>
+</body>
+</html>
