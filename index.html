@@ -131,6 +131,7 @@
         </a>
         <div class="nav-links">
             <a href="#projects" id="nav-projects">Projects</a>
+            <a href="https://ko-fi.com/eycodev" id="nav-support">Support</a>
             <a href="contact.html" id="nav-contact">Contact</a>
         </div>
     </nav>
@@ -188,7 +189,7 @@
     <script>
         const translations = {
             en: {
-                projects: "Projects", contact: "Contact",
+                projects: "Projects", support: "Support", contact: "Contact",
                 h1: "THE BEST <span>EXPERIENCES</span>",
                 desc: "Crafting experiences from epic adventures to cozy apps.",
                 view: "VIEW OUR WORK", secProj: "Our Projects",
@@ -197,7 +198,7 @@
                 beta: "BETA AVAILABLE", dev: "IN DEVELOPMENT", priv: "Privacy Policy"
             },
             es: {
-                projects: "Proyectos", contact: "Contacto",
+                projects: "Proyectos", support: "Apoyo", contact: "Contacto",
                 h1: "LAS MEJORES <span>EXPERIENCIAS</span>",
                 desc: "Creando experiencias desde aventuras épicas hasta apps relajantes.",
                 view: "VER TRABAJOS", secProj: "Nuestros Proyectos",
@@ -206,7 +207,7 @@
                 beta: "BETA DISPONIBLE", dev: "EN DESARROLLO", priv: "Política de Privacidad"
             },
             pt: {
-                projects: "Projetos", contact: "Contato",
+                projects: "Projetos", support: "Apoio", contact: "Contato",
                 h1: "OS MELHORES <span>EXPERIÊNCIAS</span>",
                 desc: "Criando experiências de aventuras épicas a aplicativos aconchegantes.",
                 view: "VER TRABALHOS", secProj: "Nossos Projetos",
@@ -218,6 +219,7 @@
 
         function setLanguage(lang) {
             document.getElementById('nav-projects').innerText = translations[lang].projects;
+            document.getElementById('nav-support').innerText = translations[lang].support;
             document.getElementById('nav-contact').innerText = translations[lang].contact;
             document.getElementById('hero-title').innerHTML = translations[lang].h1;
             document.getElementById('hero-desc').innerText = translations[lang].desc;
