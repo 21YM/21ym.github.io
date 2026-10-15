@@ -71,7 +71,7 @@
             position: relative;
             background: var(--card-bg); 
             border-radius: 15px; 
-            padding: 30px 25px; /* Más espacio interno superior e inferior */
+            padding: 30px 25px; 
             text-decoration: none; 
             color: white; 
             border: 1px solid rgba(255,255,255,0.05); 
@@ -80,34 +80,19 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            min-height: 380px; /* Aumentado de 220px a 380px para mayor altura */
+            min-height: 380px; 
         }
 
-        /* CAPA DE FONDO (Banner) */
         .card-banner {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; background-size: cover; background-position: center; background-repeat: no-repeat;
         }
 
-        /* SOMBRA "OVERFLOW" (Sella la brecha de color abajo al 100%) */
         .card-banner::after {
             content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: calc(100% + 5px); 
-            background: linear-gradient(to top, 
-                rgba(0, 0, 0, 1) 10px,   /* Negro absoluto en la base */
-                rgba(0, 0, 0, 0.7) 50%, 
-                rgba(0, 0, 0, 0.1) 100%);
+            position: absolute; top: 0; left: 0; width: 100%; height: calc(100% + 5px); 
+            background: linear-gradient(to top, rgba(0, 0, 0, 1) 10px, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.1) 100%);
             z-index: 1;
         }
 
@@ -170,7 +155,7 @@
                 <span class="tag" id="tag-beta" style="color: var(--primary);">BETA AVAILABLE</span>
             </a>
 
-            <!-- CARD 2: B.E Pixel Heroes (AHORA ENLAZADO A SU PÁGINA) -->
+            <!-- CARD 2: B.E Pixel Heroes -->
             <a href="pixel-heroes.html" class="project-card">
                 <div class="card-banner" style="background-image: url('banner-pixel-heroes.jpg');"></div>
                 <h3 id="card-be-title">B.E Pixel Heroes</h3>
@@ -191,6 +176,7 @@
             <a href="https://ko-fi.com/eycodev"><i class="fas fa-coffee"></i></a>
             <a href="https://www.tiktok.com/@eyco.dev"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.instagram.com/eyco_dev/"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:tu-correo@gmail.com" title="Contact Email"><i class="fas fa-envelope"></i></a>
         </div>
         <footer>
             &copy; 2026 21YM Studio. All rights reserved.
