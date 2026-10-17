@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificando sesión...</title>
+  <style>
+    body { font-family: system-ui, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #121212; color: #fff; text-align: center; }
+  </style>
+</head>
+<body>
+  <div id="status">Verificando credenciales con Google...</div>
+  <script>
+    // Extraemos los parámetros del hash de la URL (#access_token=...&...)
+    const hash = window.location.hash.substring(1);
+    const params = new URLSearchParams(hash);
+    const accessToken = params.get("access_token");
+
+    if (accessToken) {
+      document.getElementById("status").innerText = "¡Autenticación completada! Volviendo al juego...";
+      if (window.opener) {
+        // Notificamos a la ventana de Godot dentro del iframe
+        window.opener.postMessage({ type: "SUPABASE_AUTH_TOKEN", token: accessToken }, "*");
+        setTimeout(() => { window.close(); }, 500);
+      } else {
+        document.getElementById("status").innerText = "No se detectó la ventana principal. Puedes cerrar esta pestaña.";
+      }
+    } else {
+      document.getElementById("status").innerText = "No se encontró el token de acceso o la sesión fue cancelada.";
+    }
+  </script>
+</body>
+</html>
