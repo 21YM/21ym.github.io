@@ -59,42 +59,12 @@
             display: block;
         }
 
-        /* Botón flotante discreto de Pantalla Completa en una esquina */
-        .btn-floating-fullscreen {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(22, 21, 43, 0.85);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            font-family: var(--pixel-font);
-            font-size: 0.65rem;
-            padding: 10px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            z-index: 9999;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-floating-fullscreen:hover {
-            background: var(--primary);
-            color: #000;
-            transform: scale(1.05);
-        }
+    
     </style>
 </head>
 <body>
 
-    <div class="game-wrapper" id="game-wrapper">
-        <!-- Botón flotante para alternar pantalla completa real -->
-        <button class="btn-floating-fullscreen" onclick="toggleFullscreen()">
-            <i class="fas fa-expand"></i> <span id="fs-text">FULLSCREEN</span>
-        </button>
+    
 
         <!-- El juego carga directamente dentro del iframe apuntando a tu carpeta -->
         <iframe 
@@ -115,22 +85,7 @@
             window.history.replaceState(null, null, window.location.pathname);
         }
 
-        function toggleFullscreen() {
-            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-                if (wrapper.requestFullscreen) {
-                    wrapper.requestFullscreen();
-                } else if (wrapper.webkitRequestFullscreen) {
-                    wrapper.webkitRequestFullscreen();
-                }
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                }
-            }
-            iframe.focus();
-        }
+    
 
         // Mantener el foco en el juego para que funcionen las teclas al hacer clic
         window.addEventListener('click', () => {
