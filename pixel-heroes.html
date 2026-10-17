@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.E Pixel Heroes | Official Playtest & Beta</title>
+    <title>B.E Pixel Heroes | Play Online RPG</title>
     
     <link rel="icon" type="image/png" href="logo1.png">
 
     <!-- Open Graph for Social Sharing -->
     <meta property="og:title" content="B.E Pixel Heroes | Online Pixel Art RPG">
-    <meta property="og:description" content="Join the Official Playtest! An online pixel-art RPG featuring Idle Combat, Dungeons, Raids, and World Bosses.">
+    <meta property="og:description" content="Play the online pixel-art RPG directly in your browser. Featuring Idle Combat, Dungeons, Raids, and World Bosses.">
     <meta property="og:image" content="banner-pixel-heroes.jpg">
 
     <!-- Fonts & Icons -->
@@ -172,56 +172,6 @@
             flex-wrap: wrap;
         }
 
-        .btn-pixel-primary {
-            background: var(--primary);
-            color: #000;
-            font-family: var(--pixel-font);
-            font-size: 0.85rem;
-            padding: 18px 30px;
-            text-decoration: none;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            box-shadow: 0 5px 0 #b48008, 0 10px 20px rgba(251, 191, 36, 0.3);
-            transition: all 0.1s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            text-align: center;
-        }
-
-        .btn-pixel-primary:hover {
-            background: #fcd34d;
-            transform: translateY(-2px);
-            box-shadow: 0 7px 0 #b48008, 0 12px 25px rgba(251, 191, 36, 0.4);
-        }
-
-        .btn-pixel-primary:active {
-            transform: translateY(3px);
-            box-shadow: 0 2px 0 #b48008;
-        }
-
-        .btn-secondary {
-            background: var(--card-bg);
-            color: #fff;
-            border: 1px solid var(--card-border);
-            font-size: 0.95rem;
-            font-weight: 700;
-            padding: 16px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(0, 255, 163, 0.05);
-        }
-
         .btn-pixel-accent {
             background: var(--accent);
             color: #000;
@@ -251,9 +201,30 @@
             box-shadow: 0 2px 0 #00995c;
         }
 
+        .btn-secondary {
+            background: var(--card-bg);
+            color: #fff;
+            border: 1px solid var(--card-border);
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(251, 191, 36, 0.05);
+        }
+
         /* --- GAME EMBED SECTION (1280x720 + FULLSCREEN COVER) --- */
         .game-section {
-            padding: 40px 4% 40px 4%;
+            padding: 50px 4% 30px 4%;
             max-width: 1360px;
             margin: 0 auto;
             display: flex;
@@ -271,7 +242,6 @@
             box-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
         }
 
-        /* Contenedor exacto 1280x720 (16:9) */
         .game-viewport {
             position: relative;
             width: 100%;
@@ -291,7 +261,6 @@
             transform-origin: center center;
         }
 
-        /* Cuando entra en Pantalla Completa */
         .game-viewport:fullscreen,
         .game-viewport:-webkit-full-screen {
             width: 100vw;
@@ -448,43 +417,6 @@
             color: var(--text-dim);
         }
 
-        /* --- PLAYTEST BOX --- */
-        .playtest-box {
-            background: linear-gradient(135deg, #1b1836 0%, #0d0c1c 100%);
-            border: 2px solid var(--primary);
-            border-radius: 16px;
-            padding: 50px 30px;
-            text-align: center;
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.15);
-        }
-
-        .playtest-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-top: 35px;
-            align-items: center;
-        }
-
-        .step-card {
-            background: rgba(22, 21, 43, 0.6);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
-            width: 100%;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .step-title {
-            font-family: var(--pixel-font);
-            font-size: 0.85rem;
-            color: var(--primary);
-        }
-
         /* --- FOOTER --- */
         footer {
             background: #06050c;
@@ -502,7 +434,7 @@
 
         @media (max-width: 768px) {
             .game-title { font-size: 1.8rem; }
-            .btn-pixel-primary, .btn-pixel-accent, .btn-fullscreen { width: 100%; justify-content: center; font-size: 0.75rem; padding: 16px 20px; }
+            .btn-pixel-accent, .btn-secondary, .btn-fullscreen { width: 100%; justify-content: center; font-size: 0.75rem; padding: 16px 20px; }
             nav { justify-content: center; }
             .game-toolbar { justify-content: center; text-align: center; }
         }
@@ -524,7 +456,7 @@
                     <button class="lang-btn" onclick="setLanguage('pt')">PT</button>
                 </div>
                 <div class="status-badge" id="status-badge">
-                    <div class="pulse-dot"></div> PLAYTEST / IN DEVELOPMENT
+                    <div class="pulse-dot"></div> LIVE ONLINE BROWSER RPG
                 </div>
             </div>
         </nav>
@@ -532,14 +464,11 @@
         <div class="hero-title-container">
             <h1 class="game-title">B.E PIXEL HEROES</h1>
             <p class="game-subtitle" id="game-subtitle">
-                An online pixel-art RPG with active idle combat, multiplayer progression, deep dungeons, raids, and world bosses to conquer.
+                An online pixel-art RPG with active idle combat, multiplayer progression, deep dungeons, raids, and world bosses. Play directly in your browser!
             </p>
             <div class="cta-buttons">
                 <a href="#play-online" class="btn-pixel-accent" id="btn-cta-playnow">
-                    <i class="fas fa-play"></i> PLAY IN BROWSER
-                </a>
-                <a href="#join-beta" class="btn-pixel-primary" id="btn-cta-beta">
-                    <i class="fas fa-gamepad"></i> JOIN PLAYTEST
+                    <i class="fas fa-play"></i> PLAY NOW IN BROWSER
                 </a>
                 <a href="https://ym21studio.itch.io/be-pixel-heroes" target="_blank" class="btn-secondary" id="btn-cta-support">
                     <i class="fab fa-itch-io"></i> Follow Devlog
@@ -552,11 +481,6 @@
 
     <!-- REPRODUCTOR DEL JUEGO WEB (1280x720 + FULLSCREEN COVER) -->
     <section class="game-section" id="play-online">
-        <div class="section-heading" style="margin-bottom: 30px;">
-            <h2 id="sec-play-title">PLAY ONLINE NOW</h2>
-            <p id="sec-play-sub">Play directly in your browser (1280x720 HD) or expand to Fullscreen</p>
-        </div>
-
         <div class="game-outer-frame">
             <div class="game-viewport" id="game-viewport">
                 <iframe 
@@ -569,7 +493,7 @@
             <div class="game-toolbar">
                 <div class="game-toolbar-info">
                     <i class="fas fa-tv"></i>
-                    <span id="toolbar-res-text">B.E PIXEL HEROES WEB (1280x720)</span>
+                    <span id="toolbar-res-text">B.E PIXEL HEROES HD (1280x720)</span>
                 </div>
                 <button class="btn-fullscreen" onclick="toggleGameFullscreen()" id="btn-fullscreen">
                     <i class="fas fa-expand"></i> <span id="btn-fullscreen-text">FULLSCREEN</span>
@@ -637,44 +561,6 @@
         </div>
     </section>
 
-    <!-- REGISTRO BETA / PASO 1 Y PASO 2 -->
-    <section class="container" id="join-beta">
-        <div class="playtest-box">
-            <h2 id="playtest-title" style="font-family: var(--pixel-font); color: var(--primary); margin-bottom: 15px; font-size: 1.3rem;">
-                TEST THE GAME BEFORE ANYONE ELSE!
-            </h2>
-            <p id="playtest-desc" style="color: var(--text-dim); max-width: 600px; margin: 0 auto; line-height: 1.6;">
-                Follow these two simple steps to get access to early builds and join our playtest.
-            </p>
-
-            <div class="playtest-steps">
-                <!-- PASO 1 -->
-                <div class="step-card">
-                    <span class="step-title" id="step1-title">STEP 1: JOIN THE TESTERS GROUP</span>
-                    <p style="color: var(--text-dim); font-size: 0.9rem;" id="step1-desc">You must join this Google group first so your account is authorized to download the game.</p>
-                    <a href="https://groups.google.com/g/ym21studio-testers" target="_blank" class="btn-pixel-primary" id="btn-group-testers">
-                        <i class="fab fa-google"></i> <span id="btn-group-text">JOIN GOOGLE TESTERS GROUP</span>
-                    </a>
-                </div>
-
-                <!-- PASO 2 -->
-                <div class="step-card">
-                    <span class="step-title" id="step2-title">STEP 2: DOWNLOAD & PLAY THE GAME</span>
-                    <p style="color: var(--text-dim); font-size: 0.9rem;" id="step2-desc">Once registered in the group, access the official testing link to install the game.</p>
-                    <a href="#" target="_blank" class="btn-pixel-accent" id="btn-play-game">
-                        <i class="fas fa-download"></i> <span id="btn-play-text">ACCESS GAME TEST BUILD</span>
-                    </a>
-                </div>
-            </div>
-
-            <div style="margin-top: 35px; display: flex; justify-content: center; gap: 20px;">
-                <a href="https://ym21studio.itch.io/be-pixel-heroes" target="_blank" id="link-devlog" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem;">
-                    <i class="fab fa-itch-io"></i> Follow the Devlog on Itch.io
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- FOOTER -->
     <footer>
         <p id="footer-copy">&copy; 2026 21YM Studio. Crafted with passion for retro RPG fans.</p>
@@ -719,20 +605,16 @@
                 const screenRatio = screenW / screenH;
 
                 if (screenRatio > targetRatio) {
-                    // Pantalla más ancha que 16:9 (ej. Ultrawide o móviles alargados): escalar por ancho
                     iframe.style.width = '100vw';
                     iframe.style.height = (screenW / targetRatio) + 'px';
                 } else {
-                    // Pantalla más cuadrada que 16:9 (ej. iPad 4:3 o 16:10): escalar por alto para no dejar bandas negras
                     iframe.style.height = '100vh';
                     iframe.style.width = (screenH * targetRatio) + 'px';
                 }
             } else {
-                // Modo ventana normal (1280x720)
                 iframe.style.width = '100%';
                 iframe.style.height = '100%';
             }
-            // Devolver el foco al juego inmediatamente
             iframe.focus();
         }
 
@@ -744,14 +626,10 @@
         const translations = {
             en: {
                 btnBack: '<i class="fas fa-arrow-left"></i> Back to Studio',
-                badge: '<div class="pulse-dot"></div> PLAYTEST / IN DEVELOPMENT',
-                subtitle: "An online pixel-art RPG with active idle combat, multiplayer progression, deep dungeons, raids, and world bosses to conquer.",
-                ctaPlayNow: '<i class="fas fa-play"></i> PLAY IN BROWSER',
-                ctaBeta: '<i class="fas fa-gamepad"></i> JOIN PLAYTEST',
+                badge: '<div class="pulse-dot"></div> LIVE ONLINE BROWSER RPG',
+                subtitle: "An online pixel-art RPG with active idle combat, multiplayer progression, deep dungeons, raids, and world bosses. Play directly in your browser!",
+                ctaPlayNow: '<i class="fas fa-play"></i> PLAY NOW IN BROWSER',
                 ctaSupport: '<i class="fab fa-itch-io"></i> Follow Devlog',
-                
-                secPlayT: "PLAY ONLINE NOW",
-                secPlayS: "Play directly in your browser (1280x720 HD) or expand to Fullscreen",
                 btnFullText: "FULLSCREEN",
 
                 secFeatT: "KEY FEATURES",
@@ -767,28 +645,15 @@
                 cMageT: "MAGE", cMageD: "Powerful area-of-effect spells to control the battlefield.",
                 cClericT: "CLERIC", cClericD: "Essential support and healing blessings for the party.",
 
-                playT: "TEST THE GAME BEFORE ANYONE ELSE!",
-                playD: "Follow these two simple steps to get access to early builds and join our playtest.",
-                step1Title: "STEP 1: JOIN THE TESTERS GROUP",
-                step1Desc: "You must join this Google group first so your account is authorized to download the game.",
-                btnGroupText: "JOIN GOOGLE TESTERS GROUP",
-                step2Title: "STEP 2: DOWNLOAD & PLAY THE GAME",
-                step2Desc: "Once registered in the group, access the official testing link to install the game.",
-                btnPlayText: "ACCESS GAME TEST BUILD",
-                linkDevlog: '<i class="fab fa-itch-io"></i> Follow the Devlog on Itch.io',
                 footerCopy: "&copy; 2026 21YM Studio. Crafted with passion for retro RPG fans.",
                 footerBack: "← Back to 21YM Studio Home"
             },
             es: {
                 btnBack: '<i class="fas fa-arrow-left"></i> Volver al Estudio',
-                badge: '<div class="pulse-dot"></div> PLAYTEST / EN DESARROLLO',
-                subtitle: "Un RPG online pixel art con combate idle activo, progreso multijugador, mazmorras profundas, raids y jefes mundiales.",
-                ctaPlayNow: '<i class="fas fa-play"></i> JUGAR EN NAVEGADOR',
-                ctaBeta: '<i class="fas fa-gamepad"></i> UNIRME AL PLAYTEST',
+                badge: '<div class="pulse-dot"></div> RPG ONLINE EN NAVEGADOR',
+                subtitle: "Un RPG online pixel art con combate idle activo, progreso multijugador, mazmorras profundas, raids y jefes mundiales. ¡Juega directo en el navegador!",
+                ctaPlayNow: '<i class="fas fa-play"></i> JUGAR AHORA EN EL NAVEGADOR',
                 ctaSupport: '<i class="fab fa-itch-io"></i> Seguir Devlog',
-                
-                secPlayT: "JUEGA ONLINE AHORA",
-                secPlayS: "Juega directamente en tu navegador (1280x720 HD) o amplía a Pantalla Completa",
                 btnFullText: "PANTALLA COMPLETA",
 
                 secFeatT: "CARACTERÍSTICAS CLAVE",
@@ -804,28 +669,15 @@
                 cMageT: "MAGO", cMageD: "Poderosos hechizos de área para controlar el campo de batalla.",
                 cClericT: "CLÉRIGO", cClericD: "Soporte vital y bendiciones de sanación para el equipo.",
 
-                playT: "¡PRUEBA EL JUEGO ANTES QUE NADIE!",
-                playD: "Sigue estos dos sencillos pasos para obtener acceso a las versiones de prueba y unirte al playtest.",
-                step1Title: "PASO 1: ÚNETE AL GRUPO DE TESTERS",
-                step1Desc: "Debes unirte primero a este grupo de Google para que tu cuenta esté autorizada para descargar el juego.",
-                btnGroupText: "UNIRME AL GRUPO DE TESTERS",
-                step2Title: "PASO 2: DESCARGA Y PRUEBA EL JUEGO",
-                step2Desc: "Una vez registrado en el grupo, accede al enlace oficial de pruebas para instalar el juego.",
-                btnPlayText: "ACCEDER A LA VERSIÓN DE TEST",
-                linkDevlog: '<i class="fab fa-itch-io"></i> Sigue el Devlog en Itch.io',
                 footerCopy: "&copy; 2026 21YM Studio. Desarrollado con pasión para fans de los RPGs retro.",
                 footerBack: "← Volver a la página principal de 21YM Studio"
             },
             pt: {
                 btnBack: '<i class="fas fa-arrow-left"></i> Voltar ao Estúdio',
-                badge: '<div class="pulse-dot"></div> PLAYTEST / EM DESENVOLVIMENTO',
-                subtitle: "Um RPG online em pixel art com combate idle ativo, progresso multijogador, masmorras profundas, raids e chefes mundiais.",
-                ctaPlayNow: '<i class="fas fa-play"></i> JOGAR NO NAVEGADOR',
-                ctaBeta: '<i class="fas fa-gamepad"></i> ENTRAR NO PLAYTEST',
+                badge: '<div class="pulse-dot"></div> RPG ONLINE NO NAVEGADOR',
+                subtitle: "Um RPG online em pixel art com combate idle ativo, progresso multijogador, masmorras profundas, raids e chefes mundiais. Jogue direto no navegador!",
+                ctaPlayNow: '<i class="fas fa-play"></i> JOGAR AGORA NO NAVEGADOR',
                 ctaSupport: '<i class="fab fa-itch-io"></i> Seguir Devlog',
-                
-                secPlayT: "JOGUE ONLINE AGORA",
-                secPlayS: "Jogue diretamente no navegador (1280x720 HD) ou expanda para Tela Cheia",
                 btnFullText: "TELA CHEIA",
 
                 secFeatT: "RECURSOS PRINCIPAIS",
@@ -841,15 +693,6 @@
                 cMageT: "MAGO", cMageD: "Poderosos feitiços de área para controlar o campo de batalha.",
                 cClericT: "CLÉRIGO", cClericD: "Suporte vital e bênçãos de cura para a equipe.",
 
-                playT: "TESTE O JOGO ANTES DE TODO MUNDO!",
-                playD: "Siga estes dois passos simples para obter acesso às versões de teste e participar do playtest.",
-                step1Title: "PASSO 1: ENTRE NO GRUPO DE TESTES",
-                step1Desc: "Você precisa entrar neste grupo do Google primeiro para que sua conta seja autorizada a baixar o jogo.",
-                btnGroupText: "ENTRAR NO GRUPO DE TESTES",
-                step2Title: "PASSO 2: BAIXE E JOGUE",
-                step2Desc: "Uma vez registrado no grupo, acesse o link oficial de testes para instalar o jogo.",
-                btnPlayText: "ACESSAR VERSÃO DE TESTE",
-                linkDevlog: '<i class="fab fa-itch-io"></i> Siga o Devlog no Itch.io',
                 footerCopy: "&copy; 2026 21YM Studio. Criado com paixão para fãs de RPGs retro.",
                 footerBack: "← Voltar para a página principal"
             }
@@ -862,11 +705,7 @@
             document.getElementById('status-badge').innerHTML = t.badge;
             document.getElementById('game-subtitle').innerText = t.subtitle;
             document.getElementById('btn-cta-playnow').innerHTML = t.ctaPlayNow;
-            document.getElementById('btn-cta-beta').innerHTML = t.ctaBeta;
             document.getElementById('btn-cta-support').innerHTML = t.ctaSupport;
-
-            document.getElementById('sec-play-title').innerText = t.secPlayT;
-            document.getElementById('sec-play-sub').innerText = t.secPlayS;
             document.getElementById('btn-fullscreen-text').innerText = t.btnFullText;
 
             document.getElementById('sec-feat-title').innerText = t.secFeatT;
@@ -888,16 +727,6 @@
             document.getElementById('class-mage-desc').innerText = t.cMageD;
             document.getElementById('class-cleric-title').innerText = t.cClericT;
             document.getElementById('class-cleric-desc').innerText = t.cClericD;
-
-            document.getElementById('playtest-title').innerText = t.playT;
-            document.getElementById('playtest-desc').innerText = t.playD;
-            document.getElementById('step1-title').innerText = t.step1Title;
-            document.getElementById('step1-desc').innerText = t.step1Desc;
-            document.getElementById('btn-group-text').innerText = t.btnGroupText;
-            document.getElementById('step2-title').innerText = t.step2Title;
-            document.getElementById('step2-desc').innerText = t.step2Desc;
-            document.getElementById('btn-play-text').innerText = t.btnPlayText;
-            document.getElementById('link-devlog').innerHTML = t.linkDevlog;
 
             document.getElementById('footer-copy').innerHTML = t.footerCopy;
             document.getElementById('footer-back').innerText = t.footerBack;
