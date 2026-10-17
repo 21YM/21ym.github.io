@@ -222,7 +222,6 @@
             background: rgba(0, 255, 163, 0.05);
         }
 
-        /* Botón alternativo para el paso 2 (estilo neón/accent) */
         .btn-pixel-accent {
             background: var(--accent);
             color: #000;
@@ -250,6 +249,102 @@
         .btn-pixel-accent:active {
             transform: translateY(3px);
             box-shadow: 0 2px 0 #00995c;
+        }
+
+        /* --- GAME EMBED SECTION (1280x720 + FULLSCREEN COVER) --- */
+        .game-section {
+            padding: 40px 4% 40px 4%;
+            max-width: 1360px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .game-outer-frame {
+            width: 100%;
+            max-width: 1280px;
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.2);
+        }
+
+        /* Contenedor exacto 1280x720 (16:9) */
+        .game-viewport {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .game-viewport iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            transform-origin: center center;
+        }
+
+        /* Cuando entra en Pantalla Completa */
+        .game-viewport:fullscreen,
+        .game-viewport:-webkit-full-screen {
+            width: 100vw;
+            height: 100vh;
+            aspect-ratio: auto;
+            background: #000;
+        }
+
+        .game-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 24px;
+            background: #111022;
+            border-top: 1px solid var(--card-border);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .game-toolbar-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--pixel-font);
+            font-size: 0.75rem;
+            color: var(--primary);
+        }
+
+        .btn-fullscreen {
+            background: var(--primary);
+            color: #000;
+            font-family: var(--pixel-font);
+            font-size: 0.7rem;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #b48008;
+            transition: all 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-fullscreen:hover {
+            background: #fcd34d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #b48008;
+        }
+
+        .btn-fullscreen:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #b48008;
         }
 
         /* --- SECTIONS --- */
@@ -407,8 +502,9 @@
 
         @media (max-width: 768px) {
             .game-title { font-size: 1.8rem; }
-            .btn-pixel-primary, .btn-pixel-accent { width: 100%; justify-content: center; font-size: 0.75rem; padding: 16px 20px; }
+            .btn-pixel-primary, .btn-pixel-accent, .btn-fullscreen { width: 100%; justify-content: center; font-size: 0.75rem; padding: 16px 20px; }
             nav { justify-content: center; }
+            .game-toolbar { justify-content: center; text-align: center; }
         }
     </style>
 </head>
@@ -439,6 +535,9 @@
                 An online pixel-art RPG with active idle combat, multiplayer progression, deep dungeons, raids, and world bosses to conquer.
             </p>
             <div class="cta-buttons">
+                <a href="#play-online" class="btn-pixel-accent" id="btn-cta-playnow">
+                    <i class="fas fa-play"></i> PLAY IN BROWSER
+                </a>
                 <a href="#join-beta" class="btn-pixel-primary" id="btn-cta-beta">
                     <i class="fas fa-gamepad"></i> JOIN PLAYTEST
                 </a>
@@ -450,6 +549,34 @@
 
         <div></div>
     </header>
+
+    <!-- REPRODUCTOR DEL JUEGO WEB (1280x720 + FULLSCREEN COVER) -->
+    <section class="game-section" id="play-online">
+        <div class="section-heading" style="margin-bottom: 30px;">
+            <h2 id="sec-play-title">PLAY ONLINE NOW</h2>
+            <p id="sec-play-sub">Play directly in your browser (1280x720 HD) or expand to Fullscreen</p>
+        </div>
+
+        <div class="game-outer-frame">
+            <div class="game-viewport" id="game-viewport">
+                <iframe 
+                    id="game-iframe" 
+                    src="be-pixelheroes/index.html" 
+                    allow="autoplay; fullscreen; gamepad; clipboard-read; clipboard-write" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="game-toolbar">
+                <div class="game-toolbar-info">
+                    <i class="fas fa-tv"></i>
+                    <span id="toolbar-res-text">B.E PIXEL HEROES WEB (1280x720)</span>
+                </div>
+                <button class="btn-fullscreen" onclick="toggleGameFullscreen()" id="btn-fullscreen">
+                    <i class="fas fa-expand"></i> <span id="btn-fullscreen-text">FULLSCREEN</span>
+                </button>
+            </div>
+        </div>
+    </section>
 
     <!-- CARACTERÍSTICAS DEL JUEGO -->
     <section class="container">
@@ -534,7 +661,6 @@
                 <div class="step-card">
                     <span class="step-title" id="step2-title">STEP 2: DOWNLOAD & PLAY THE GAME</span>
                     <p style="color: var(--text-dim); font-size: 0.9rem;" id="step2-desc">Once registered in the group, access the official testing link to install the game.</p>
-                    <!-- Reemplaza el '#' del href con tu enlace oficial de Google Console / Play Console cuando lo tengas -->
                     <a href="#" target="_blank" class="btn-pixel-accent" id="btn-play-game">
                         <i class="fas fa-download"></i> <span id="btn-play-text">ACCESS GAME TEST BUILD</span>
                     </a>
@@ -555,16 +681,79 @@
         <p style="margin-top: 10px;"><a href="index.html" id="footer-back">← Back to 21YM Studio Home</a></p>
     </footer>
 
-    <!-- SCRIPT DE TRADUCCIÓN EN VIVO -->
+    <!-- SCRIPTS: PANTALLA COMPLETA CON MODO COVER + TRADUCCIÓN -->
     <script>
+        const viewport = document.getElementById('game-viewport');
+        const iframe = document.getElementById('game-iframe');
+
+        // Si volvemos de Google OAuth con #access_token en la URL principal, se lo pasamos al iframe del juego
+        if (window.location.hash && window.location.hash.includes('access_token=')) {
+            iframe.src = 'be-pixelheroes/index.html' + window.location.hash;
+            window.history.replaceState(null, null, window.location.pathname);
+        }
+
+        // Activar / Salir de Pantalla Completa
+        function toggleGameFullscreen() {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+                if (viewport.requestFullscreen) {
+                    viewport.requestFullscreen();
+                } else if (viewport.webkitRequestFullscreen) {
+                    viewport.webkitRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+        }
+
+        // Cálculo exacto de "object-fit: cover" para el iframe 16:9 en Fullscreen (Cero bordes negros)
+        function applyFullscreenCover() {
+            const isFull = document.fullscreenElement === viewport || document.webkitFullscreenElement === viewport;
+            if (isFull) {
+                const screenW = window.innerWidth;
+                const screenH = window.innerHeight;
+                const targetRatio = 16 / 9;
+                const screenRatio = screenW / screenH;
+
+                if (screenRatio > targetRatio) {
+                    // Pantalla más ancha que 16:9 (ej. Ultrawide o móviles alargados): escalar por ancho
+                    iframe.style.width = '100vw';
+                    iframe.style.height = (screenW / targetRatio) + 'px';
+                } else {
+                    // Pantalla más cuadrada que 16:9 (ej. iPad 4:3 o 16:10): escalar por alto para no dejar bandas negras
+                    iframe.style.height = '100vh';
+                    iframe.style.width = (screenH * targetRatio) + 'px';
+                }
+            } else {
+                // Modo ventana normal (1280x720)
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+            }
+            // Devolver el foco al juego inmediatamente
+            iframe.focus();
+        }
+
+        document.addEventListener('fullscreenchange', applyFullscreenCover);
+        document.addEventListener('webkitfullscreenchange', applyFullscreenCover);
+        window.addEventListener('resize', applyFullscreenCover);
+
+        // --- TRADUCCIONES ---
         const translations = {
             en: {
                 btnBack: '<i class="fas fa-arrow-left"></i> Back to Studio',
                 badge: '<div class="pulse-dot"></div> PLAYTEST / IN DEVELOPMENT',
                 subtitle: "An online pixel-art RPG with active idle combat, multiplayer progression, deep dungeons, raids, and world bosses to conquer.",
+                ctaPlayNow: '<i class="fas fa-play"></i> PLAY IN BROWSER',
                 ctaBeta: '<i class="fas fa-gamepad"></i> JOIN PLAYTEST',
                 ctaSupport: '<i class="fab fa-itch-io"></i> Follow Devlog',
                 
+                secPlayT: "PLAY ONLINE NOW",
+                secPlayS: "Play directly in your browser (1280x720 HD) or expand to Fullscreen",
+                btnFullText: "FULLSCREEN",
+
                 secFeatT: "KEY FEATURES",
                 secFeatS: "What awaits you in the realm of B.E Pixel Heroes",
                 f1T: "Idle Combat", f1D: "Cooldown reduction (CD) is nerfed in idle mode to encourage active play while keeping progression smooth.",
@@ -594,9 +783,14 @@
                 btnBack: '<i class="fas fa-arrow-left"></i> Volver al Estudio',
                 badge: '<div class="pulse-dot"></div> PLAYTEST / EN DESARROLLO',
                 subtitle: "Un RPG online pixel art con combate idle activo, progreso multijugador, mazmorras profundas, raids y jefes mundiales.",
+                ctaPlayNow: '<i class="fas fa-play"></i> JUGAR EN NAVEGADOR',
                 ctaBeta: '<i class="fas fa-gamepad"></i> UNIRME AL PLAYTEST',
                 ctaSupport: '<i class="fab fa-itch-io"></i> Seguir Devlog',
                 
+                secPlayT: "JUEGA ONLINE AHORA",
+                secPlayS: "Juega directamente en tu navegador (1280x720 HD) o amplía a Pantalla Completa",
+                btnFullText: "PANTALLA COMPLETA",
+
                 secFeatT: "CARACTERÍSTICAS CLAVE",
                 secFeatS: "Lo que te espera en el reino de B.E Pixel Heroes",
                 f1T: "Combate Idle", f1D: "La reducción de enfriamiento (CD) está nerfeada en modo idle para incentivar a los jugadores a jugar activamente.",
@@ -626,9 +820,14 @@
                 btnBack: '<i class="fas fa-arrow-left"></i> Voltar ao Estúdio',
                 badge: '<div class="pulse-dot"></div> PLAYTEST / EM DESENVOLVIMENTO',
                 subtitle: "Um RPG online em pixel art com combate idle ativo, progresso multijogador, masmorras profundas, raids e chefes mundiais.",
+                ctaPlayNow: '<i class="fas fa-play"></i> JOGAR NO NAVEGADOR',
                 ctaBeta: '<i class="fas fa-gamepad"></i> ENTRAR NO PLAYTEST',
                 ctaSupport: '<i class="fab fa-itch-io"></i> Seguir Devlog',
                 
+                secPlayT: "JOGUE ONLINE AGORA",
+                secPlayS: "Jogue diretamente no navegador (1280x720 HD) ou expanda para Tela Cheia",
+                btnFullText: "TELA CHEIA",
+
                 secFeatT: "RECURSOS PRINCIPAIS",
                 secFeatS: "O que te espera no reino de B.E Pixel Heroes",
                 f1T: "Combate Idle", f1D: "A redução de tempo de recarga (CD) é reduzida no modo idle para incentivar o jogo ativo dos jogadores.",
@@ -662,8 +861,13 @@
             document.getElementById('btn-back').innerHTML = t.btnBack;
             document.getElementById('status-badge').innerHTML = t.badge;
             document.getElementById('game-subtitle').innerText = t.subtitle;
+            document.getElementById('btn-cta-playnow').innerHTML = t.ctaPlayNow;
             document.getElementById('btn-cta-beta').innerHTML = t.ctaBeta;
             document.getElementById('btn-cta-support').innerHTML = t.ctaSupport;
+
+            document.getElementById('sec-play-title').innerText = t.secPlayT;
+            document.getElementById('sec-play-sub').innerText = t.secPlayS;
+            document.getElementById('btn-fullscreen-text').innerText = t.btnFullText;
 
             document.getElementById('sec-feat-title').innerText = t.secFeatT;
             document.getElementById('sec-feat-sub').innerText = t.secFeatS;
