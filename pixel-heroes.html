@@ -14,13 +14,10 @@
 
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #fbbf24;
             --bg-dark: #0b0914;
-            --pixel-font: 'Press Start 2P', monospace;
         }
 
         * {
@@ -35,12 +32,10 @@
             background-color: var(--bg-dark);
             overflow: hidden;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        /* Contenedor principal que llena toda la ventana manteniendo proporción o expandiendo */
         .game-wrapper {
             position: relative;
             width: 100vw;
@@ -58,15 +53,12 @@
             border: none;
             display: block;
         }
-
-    
     </style>
 </head>
 <body>
 
-    
-
-        <!-- El juego carga directamente dentro del iframe apuntando a tu carpeta -->
+    <div class="game-wrapper" id="game-wrapper">
+        <!-- El juego carga directamente y ocupa toda la pantalla -->
         <iframe 
             id="game-iframe" 
             src="be-pixelheroes/index.html" 
@@ -76,7 +68,6 @@
     </div>
 
     <script>
-        const wrapper = document.getElementById('game-wrapper');
         const iframe = document.getElementById('game-iframe');
 
         // Capturar token de Google OAuth si venimos de redirección y pasárselo al juego
@@ -85,10 +76,12 @@
             window.history.replaceState(null, null, window.location.pathname);
         }
 
-    
-
-        // Mantener el foco en el juego para que funcionen las teclas al hacer clic
+        // Mantener el foco en el juego automáticamente para que respondan los controles y el teclado
         window.addEventListener('click', () => {
+            if (iframe) iframe.focus();
+        });
+        
+        window.addEventListener('load', () => {
             if (iframe) iframe.focus();
         });
     </script>
