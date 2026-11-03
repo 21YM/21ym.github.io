@@ -76,6 +76,8 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .brand-box img {
@@ -94,14 +96,14 @@
 
         .lang-picker {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
         .lang-btn {
             background: var(--bg-panel);
             color: #aaa;
             border: 2px solid var(--border-color);
-            padding: 8px 12px;
+            padding: 8px 10px;
             font-size: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -112,7 +114,6 @@
             background: var(--pixel-gold);
             color: #000;
             border-color: #fff;
-            color: #000;
             box-shadow: 3px 3px 0 #000, 0 0 12px var(--pixel-gold-glow);
         }
 
@@ -129,7 +130,8 @@
             height: 380px;
             border: 4px solid var(--border-light);
             box-shadow: 0 12px 0 #000, 0 0 30px rgba(107, 91, 149, 0.3);
-            background: url('banner-pixel-heroes.jpg') center/cover no-repeat #000;
+            /* Imagen bajada un poco para mostrar mejor el contenido central usando background-position */
+            background: url('banner-pixel-heroes.jpg') center 60% / cover no-repeat #000;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -243,7 +245,7 @@
             margin-bottom: 5px;
         }
 
-        /* TARJETAS DE CATEGORÍAS GRANDES Y EPIC */
+        /* TARJETAS DE CATEGORÍAS GRANDES */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -295,7 +297,7 @@
             text-shadow: 1px 1px #000;
         }
 
-        /* ROADMAP / FUTURO SECCIÓN DOBLE */
+        /* ROADMAP */
         .roadmap-container {
             background: linear-gradient(135deg, var(--bg-panel) 0%, #0d091a 100%);
             border: 4px solid var(--border-light);
@@ -386,13 +388,15 @@
 
     <!-- TOP NAVIGATION -->
     <nav class="top-nav">
-        <div class="brand-box">
+        <!-- Logo y nombre llevan a la página principal -->
+        <a href="#" class="brand-box">
             <img src="logo1.png" alt="Logo">
             <span>21YM STUDIO</span>
-        </div>
+        </a>
         <div class="lang-picker">
             <button class="lang-btn active" onclick="setLanguage('en')">EN 🇬🇧</button>
             <button class="lang-btn" onclick="setLanguage('es')">ES 🇪🇸</button>
+            <button class="lang-btn" onclick="setLanguage('pt')">PT 🇧🇷</button>
         </div>
     </nav>
 
@@ -425,16 +429,16 @@
         
         <!-- DESCRIPCIÓN GENERAL -->
         <div class="feature-card" style="width: 100%;">
-            <div style="display: flex; align-items: center; gap: 20px;">
+            <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
                 <div class="feature-icon"><i class="fa-solid fa-gamepad"></i></div>
-                <div>
+                <div style="flex: 1; min-width: 240px;">
                     <h3 id="overview-title" style="font-size: 13px; color: var(--pixel-gold); margin-bottom: 8px;">THE ULTIMATE HYBRID RPG</h3>
                     <p id="overview-desc" style="font-size: 10px; line-height: 1.9;">An immersive indie Pixel-Art RPG built for true tactical lovers. Experience a seamless fusion where active combat commands your complete strategy, and idle systems keep your legacy growing when you step away.</p>
                 </div>
             </div>
         </div>
 
-        <!-- SECCIÓN DE CARACTERÍSTICAS AAA (GRANDE) -->
+        <!-- SECCIÓN DE CARACTERÍSTICAS AAA -->
         <div>
             <h2 class="section-header" id="features-header">KEY GAMEPLAY FEATURES</h2>
             <div class="features-grid" style="margin-top: 20px;">
@@ -460,7 +464,7 @@
             </div>
         </div>
 
-        <!-- SECCIÓN ROADMAP / FUTURO (GRANDE) -->
+        <!-- SECCIÓN ROADMAP / FUTURO -->
         <div class="roadmap-container">
             <h2 class="section-header" id="roadmap-header" style="border-left-color: var(--pixel-green);">DEVELOPMENT ROADMAP & PC EVOLUTION</h2>
             <div class="roadmap-steps">
@@ -483,16 +487,13 @@
             </div>
         </div>
 
-        <!-- COMUNIDAD Y ENLACES -->
+        <!-- COMUNIDAD Y ENLACES (Sin Discord) -->
         <div style="text-align: center; margin-top: 10px;">
             <h2 class="section-header" id="community-header" style="border-left-color: #3b82f6; display: inline-block; margin-bottom: 25px;">JOIN THE COMMUNITY</h2>
             <div class="community-section">
-                <!-- RECUERDA PONER TUS ENLACES REALES AQUÍ -->
+                <!-- RECUERDA PONER TU ENLACE REAL DE ITCH.IO AQUÍ -->
                 <a href="https://21ym-studio.itch.io/kingdom-pixel-heroes" target="_blank" class="community-btn">
                     <i class="fa-brands fa-itch-io" style="font-size: 16px; color: #fa5c5c;"></i> ITCH.IO DEVLOGS
-                </a>
-                <a href="AQUÍ_TU_DISCORD" target="_blank" class="community-btn">
-                    <i class="fa-brands fa-discord" style="font-size: 16px; color: #5865F2;"></i> DISCORD SERVER
                 </a>
             </div>
         </div>
@@ -503,7 +504,7 @@
 
     </div>
 
-    <!-- SCRIPT MULTIIDIOMA -->
+    <!-- SCRIPT MULTIIDIOMA (EN, ES, PT) -->
     <script>
         const translations = {
             en: {
@@ -549,6 +550,28 @@
                 road3Title: "Versión PC de Nueva Generación",
                 road3Desc: "Un lanzamiento independiente completo para PC con gráficos pixel-art en alta resolución muy superiores y diseños adaptados a escritorio.",
                 communityHeader: "ÚNETE A LA COMUNIDAD"
+            },
+            pt: {
+                status: "STATUS DO SISTEMA: EM DESENVOLVIMENTO",
+                mainTitle: "KINGDOM PIXEL HEROES",
+                cta: "BAIXAR NO GOOGLE PLAY",
+                overviewTitle: "O RPG HÍBRIDO DEFINITIVO",
+                overviewDesc: "Um RPG indie Pixel-Art imersivo feito para verdadeiros amantes de tática. Experimente uma fusão onde o combate ativo comanda sua estratégia, e os sistemas idle mantêm seu legado crescendo quando você se ausenta.",
+                featuresHeader: "PRINCIPAIS RECURSOS",
+                feat1Title: "Foco no Combate Ativo",
+                feat1Desc: "O engajamento direto traz máxima eficiência e recompensas. Evite penalidades de inatividade com decisões táticas e comandos manuais.",
+                feat2Title: "Pixel Art Retrô",
+                feat2Desc: "Estética retrô artesanal, sprites de personagens personalizados e ambientes ricos desenhados para entusiastas de RPGs clássicos.",
+                feat3Title: "Progressão Constante",
+                feat3Desc: "Atualizações frequentes de conteúdo, melhorias dinâmicas de equipamentos e patches semanais baseados no feedback da comunidade.",
+                roadmapHeader: "ROTEIRO DE DESENVOLVIMENTO E EVOLUÇÃO PARA PC",
+                road1Title: "Playtest Mobile",
+                road1Desc: "Balanceamento ativo, correções de bugs e atualizações semanais contínuas para a versão do Android no Google Play.",
+                road2Title: "Multiplayer e Sistemas",
+                road2Desc: "Futura introdução de masmorras, profissões de criação, guildas, arenas e economias ao vivo.",
+                road3Title: "Versão PC Next-Gen",
+                road3Desc: "Um lançamento completo para PC com pixel art de alta resolução muito superior e layouts expandidos para desktop.",
+                communityHeader: "JUNTE-SE À COMUNIDADE"
             }
         };
 
