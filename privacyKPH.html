@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Kingdom Pixel Heroes</title>
+    
+    <link rel="icon" type="image/png" href="logo1.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #07050d;
+            --bg-panel: #120e21;
+            --pixel-gold: #f4c430;
+            --pixel-gold-glow: rgba(244, 196, 48, 0.4);
+            --pixel-green: #10b981;
+            --border-color: #3b2f58;
+            --border-light: #6b5b95;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive, monospace;
+            image-rendering: pixelated;
+        }
+
+        body, html {
+            width: 100%;
+            min-height: 100vh;
+            background-color: var(--bg-dark);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 20%, rgba(30, 20, 60, 0.4) 0%, rgba(7, 5, 13, 0.95) 80%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* NAVEGACIÓN SUPERIOR */
+        .top-nav {
+            width: 100%;
+            max-width: 1000px;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .brand-box img {
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--pixel-gold);
+            box-shadow: 0 0 10px var(--pixel-gold-glow);
+        }
+
+        .brand-box span {
+            font-size: 11px;
+            color: var(--pixel-gold);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px #000;
+        }
+
+        .lang-picker {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            background: var(--bg-panel);
+            color: #aaa;
+            border: 2px solid var(--border-color);
+            padding: 8px 10px;
+            font-size: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 3px 3px 0 #000;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--pixel-gold);
+            color: #000;
+            border-color: #fff;
+            box-shadow: 3px 3px 0 #000, 0 0 12px var(--pixel-gold-glow);
+        }
+
+        /* CONTENEDOR DE LA POLÍTICA */
+        .policy-container {
+            width: 100%;
+            max-width: 900px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .policy-card {
+            background-color: var(--bg-panel);
+            border: 4px solid var(--border-light);
+            box-shadow: 8px 8px 0 #000;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 16px;
+            color: var(--pixel-gold);
+            text-shadow: 3px 3px #000;
+            border-left: 6px solid var(--pixel-gold);
+            padding-left: 12px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        h2 {
+            font-size: 11px;
+            color: #fff;
+            text-shadow: 2px 2px #000;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        p, li {
+            font-size: 8px;
+            color: #b8b2cb;
+            line-height: 2;
+            text-shadow: 1px 1px #000;
+        }
+
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .back-btn {
+            background: var(--bg-panel);
+            color: var(--pixel-gold);
+            text-decoration: none;
+            font-size: 8px;
+            padding: 12px 20px;
+            border: 2px solid var(--pixel-gold);
+            box-shadow: 3px 3px 0 #000;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: fit-content;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--pixel-gold);
+            color: #000;
+            transform: scale(1.02);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 8px;
+            color: #554a78;
+            text-align: center;
+            padding-bottom: 40px;
+            text-shadow: 1px 1px #000;
+        }
+
+        @media (max-width: 768px) {
+            .policy-card { padding: 20px; }
+            h1 { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION -->
+    <nav class="top-nav">
+        <a href="index.html" class="brand-box">
+            <img src="logo1.png" alt="Logo">
+            <span>21YM STUDIO</span>
+        </a>
+        <div class="lang-picker">
+            <button class="lang-btn active" onclick="setLanguage('en')">EN 🇬🇧</button>
+            <button class="lang-btn" onclick="setLanguage('es')">ES 🇪🇸</button>
+            <button class="lang-btn" onclick="setLanguage('pt')">PT 🇧🇷</button>
+        </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="policy-container">
+        
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> <span id="back-text">BACK TO HOME</span>
+        </a>
+
+        <div class="policy-card">
+            <h1 id="p-title">PRIVACY POLICY</h1>
+            <p id="p-updated">Last updated: June 2026</p>
+
+            <h2 id="h1"><i class="fa-solid fa-shield-halved" style="color: var(--pixel-gold);"></i> 1. Introduction</h2>
+            <p id="t1">21YM Studio built the "Kingdom Pixel Heroes" app as a Free app (with optional ads and in-app purchases). This SERVICE is provided by 21YM Studio at no cost and is intended for use as is. This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.</p>
+
+            <h2 id="h2"><i class="fa-solid fa-database" style="color: var(--pixel-gold);"></i> 2. Information Collection and Use</h2>
+            <p id="t2">For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information. The information that we request will be retained by us and used as described in this privacy policy. The app does use third-party services that may collect information used to identify you, such as:</p>
+            <ul id="list-services">
+                <li>Google Play Services</li>
+                <li>Google AdMob (for serving personalized/non-personalized ads and UMP consent management)</li>
+                <li>Supabase (for cloud user authentication and game progress storage)</li>
+            </ul>
+
+            <h2 id="h3"><i class="fa-solid fa-cookie-bite" style="color: var(--pixel-gold);"></i> 3. Advertising & Consent (RGPD / UMP)</h2>
+            <p id="t3">We use Google AdMob to display advertisements in our mobile application. AdMob may use device identifiers and cookies to serve ads based on your prior visits to our app or other apps. Users in the European Economic Area (EEA) are presented with a consent dialog powered by Google's UMP (User Messaging Platform) to choose their ad personalization preferences in compliance with GDPR regulations.</p>
+
+            <h2 id="h4"><i class="fa-solid fa-lock" style="color: var(--pixel-gold);"></i> 4. Security</h2>
+            <p id="t4">We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.</p>
+
+            <h2 id="h5"><i class="fa-solid fa-envelope" style="color: var(--pixel-gold);"></i> 5. Contact Us</h2>
+            <p id="t5">If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at support or through our community channels on itch.io.</p>
+        </div>
+
+        <footer>
+            © 2026 21YM STUDIO • KINGDOM PIXEL HEROES
+        </footer>
+
+    </div>
+
+    <!-- SCRIPT MULTIIDIOMA -->
+    <script>
+        const translations = {
+            en: {
+                back: "BACK TO HOME",
+                title: "PRIVACY POLICY",
+                updated: "Last updated: June 2026",
+                h1: "1. Introduction",
+                t1: "21YM Studio built the 'Kingdom Pixel Heroes' app as a Free app (with optional ads and in-app purchases). This SERVICE is provided by 21YM Studio at no cost and is intended for use as is. This page is used to inform visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service.",
+                h2: "2. Information Collection and Use",
+                t2: "For a better experience, while using our Service, we may require you to provide us with certain personally identifiable information. The information that we request will be retained by us and used as described in this privacy policy. The app does use third-party services that may collect information used to identify you, such as:",
+                h3: "3. Advertising & Consent (GDPR / UMP)",
+                t3: "We use Google AdMob to display advertisements in our mobile application. AdMob may use device identifiers and cookies to serve ads based on your prior visits to our app or other apps. Users in the European Economic Area (EEA) are presented with a consent dialog powered by Google's UMP (User Messaging Platform) to choose their ad personalization preferences in compliance with GDPR regulations.",
+                h4: "4. Security",
+                t4: "We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.",
+                h5: "5. Contact Us",
+                t5: "If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us through our community channels on itch.io."
+            },
+            es: {
+                back: "VOLVER AL INICIO",
+                title: "POLÍTICA DE PRIVACIDAD",
+                updated: "Última actualización: Junio de 2026",
+                h1: "1. Introducción",
+                t1: "21YM Studio creó la aplicación 'Kingdom Pixel Heroes' como una app gratuita (con anuncios opcionales y compras integradas). Este SERVICIO es proporcionado por 21YM Studio sin coste y está diseñado para usarse tal cual. Esta página se utiliza para informar a los visitantes sobre nuestras políticas con respecto a la recopilación, uso y divulgación de Información Personal.",
+                h2: "2. Recopilación y Uso de Información",
+                t2: "Para una mejor experiencia al usar nuestro Servicio, podemos solicitarle cierta información de identificación personal. La aplicación utiliza servicios de terceros que pueden recopilar información utilizada para identificarle, tales como:",
+                h3: "3. Publicidad y Consentimiento (RGPD / UMP)",
+                t3: "Utilizamos Google AdMob para mostrar anuncios en nuestra aplicación móvil. AdMob puede utilizar identificadores de dispositivo y cookies para mostrar anuncios basados en sus visitas anteriores. Los usuarios del Espacio Económico Europeo (EEE) reciben un diálogo de consentimiento respaldado por la plataforma UMP de Google para elegir sus preferencias de privacidad cumpliendo con el RGPD.",
+                h4: "4. Seguridad",
+                t4: "Valoramos su confianza al proporcionarnos su Información Personal, por lo que nos esforzamos por utilizar medios comercialmente aceptables para protegerla. Sin embargo, ningún método de transmisión por internet es 100% seguro.",
+                h5: "5. Contacto",
+                t5: "Si tiene alguna pregunta o sugerencia sobre nuestra Política de Privacidad, no dude en contactarnos a través de nuestros canales oficiales en itch.io."
+            },
+            pt: {
+                back: "VOLTAR AO INÍCIO",
+                title: "POLÍTICA DE PRIVACIDADE",
+                updated: "Última atualização: Junho de 2026",
+                h1: "1. Introdução",
+                t1: "A 21YM Studio criou o aplicativo 'Kingdom Pixel Heroes' como um aplicativo gratuito (com anúncios opcionais e compras no aplicativo). Este SERVIÇO é fornecido pela 21YM Studio sem custo e destina-se ao uso no estado em que se encontra. Esta página é usada para informar os visitantes sobre nossas políticas de coleta, uso e divulgação de Informações Pessoais.",
+                h2: "2. Coleta e Uso de Informações",
+                t2: "Para uma melhor experiência ao usar nosso Serviço, podemos exigir que você nos forneça certas informações de identificação pessoal. O aplicativo usa serviços de terceiros que podem coletar informações para identificá-lo, tais como:",
+                h3: "3. Publicidade e Consentimento (GDPR / UMP)",
+                t3: "Usamos o Google AdMob para exibir anúncios em nosso aplicativo móvel. O AdMob pode usar identificadores de dispositivo e cookies para exibir anúncios com base em suas visitas anteriores. Os usuários no Espaço Econômico Europeu (EEE) recebem um diálogo de consentimento da plataforma UMP do Google para escolher suas preferências de anúncios em conformidade com o GDPR.",
+                h4: "4. Segurança",
+                t4: "Valorizamos sua confiança em nos fornecer suas Informações Pessoais, por isso nos esforçamos para usar meios comercialmente aceitáveis para protegê-las. No entanto, nenhum método de transmissão pela internet é 100% seguro.",
+                h5: "5. Contato",
+                t5: "Se você tiver dúvidas ou sugestões sobre nossa Política de Privacidade, entre em contato conosco através dos nossos canais no itch.io."
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+
+            const t = translations[lang];
+            document.getElementById('back-text').innerText = t.back;
+            document.getElementById('p-title').innerText = t.title;
+            document.getElementById('p-updated').innerText = t.updated;
+            document.getElementById('h1').innerHTML = `<i class="fa-solid fa-shield-halved" style="color: var(--pixel-gold);"></i> ${t.h1}`;
+            document.getElementById('t1').innerText = t.t1;
+            document.getElementById('h2').innerHTML = `<i class="fa-solid fa-database" style="color: var(--pixel-gold);"></i> ${t.h2}`;
+            document.getElementById('t2').innerText = t.t2;
+            document.getElementById('h3').innerHTML = `<i class="fa-solid fa-cookie-bite" style="color: var(--pixel-gold);"></i> ${t.h3}`;
+            document.getElementById('t3').innerText = t.t3;
+            document.getElementById('h4').innerHTML = `<i class="fa-solid fa-lock" style="color: var(--pixel-gold);"></i> ${t.h4}`;
+            document.getElementById('t4').innerText = t.t4;
+            document.getElementById('h5').innerHTML = `<i class="fa-solid fa-envelope" style="color: var(--pixel-gold);"></i> ${t.h5}`;
+            document.getElementById('t5').innerText = t.t5;
+        }
+    </script>
+</body>
+</html>
