@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B.E Pixel Heroes | Play Online RPG</title>
+    <title>B.E Pixel Heroes | Mobile Pixel Art RPG</title>
     
     <link rel="icon" type="image/png" href="logo1.png">
 
     <!-- Open Graph for Social Sharing -->
-    <meta property="og:title" content="B.E Pixel Heroes | Online Pixel Art RPG">
-    <meta property="og:description" content="Play the online pixel-art RPG directly in your browser or download on Android!">
+    <meta property="og:title" content="B.E Pixel Heroes | Mobile Pixel Art RPG">
+    <meta property="og:description" content="Download the ultimate pixel-art RPG on Google Play. Active & Idle hybrid combat!">
     <meta property="og:image" content="banner-pixel-heroes.jpg">
 
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Fuente estilo Pixel Art (Press Start 2P) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -22,6 +21,7 @@
     <style>
         :root {
             --bg-dark: #0b0914;
+            --card-bg: #181425;
             --pixel-gold: #ffcc00;
             --pixel-green: #25e054;
             --pixel-border: #ffffff;
@@ -35,178 +35,187 @@
         }
 
         body, html {
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            min-height: 100vh;
             background-color: var(--bg-dark);
-            overflow: hidden;
+            color: #fff;
             display: flex;
             flex-direction: column;
-        }
-
-        /* Banner Pixel Art Superior */
-        .pixel-banner {
-            position: absolute;
-            top: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 999;
-            background: #181425;
-            border: 4px solid var(--pixel-border);
-            box-shadow: 0 6px 0 #000, 0 0 15px rgba(0,0,0,0.8);
-            padding: 10px 18px;
-            display: flex;
             align-items: center;
-            gap: 15px;
-            border-radius: 2px;
-            /* Efecto Pixel Art Sharp Edge */
+            justify-content: flex-start;
+            overflow-x: hidden;
+        }
+
+        /* Contenedor principal de la landing */
+        .landing-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 30px;
+            margin: auto;
+        }
+
+        /* Logo o icono del juego */
+        .game-logo {
+            width: 120px;
+            height: 120px;
+            border: 4px solid var(--pixel-border);
+            box-shadow: 0 6px 0 #000;
             image-rendering: pixelated;
+            background: #000;
         }
 
-        .pixel-banner p {
-            color: #fff;
-            font-size: 10px;
-            line-height: 1.4;
-            text-shadow: 2px 2px #000;
-        }
-
-        .pixel-banner p span {
+        /* Títulos */
+        h1 {
+            font-size: 20px;
             color: var(--pixel-gold);
+            text-shadow: 3px 3px #000;
+            line-height: 1.5;
         }
 
-        /* Botón estilo Arcade/Pixel */
+        p {
+            font-size: 10px;
+            color: #bbb;
+            line-height: 1.8;
+            max-width: 600px;
+            text-shadow: 1px 1px #000;
+        }
+
+        /* Tarjeta de características */
+        .features-box {
+            background-color: var(--card-bg);
+            border: 4px solid var(--pixel-border);
+            box-shadow: 0 8px 0 #000;
+            padding: 25px;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .features-box h3 {
+            font-size: 11px;
+            color: var(--pixel-gold);
+            margin-bottom: 5px;
+        }
+
+        .features-box ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .features-box li {
+            font-size: 9px;
+            line-height: 1.5;
+            color: #ddd;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .features-box li i {
+            color: var(--pixel-green);
+        }
+
+        /* Botón gigante de Google Play */
         .playstore-btn {
             background-color: var(--pixel-green);
             color: #000;
             text-decoration: none;
-            font-size: 9px;
-            padding: 8px 12px;
-            display: flex;
+            font-size: 12px;
+            padding: 18px 30px;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 15px;
             font-weight: bold;
-            border: 3px solid #fff;
-            box-shadow: inset -3px -3px 0px 0px #11782a, 3px 3px 0px 0px #000;
+            border: 4px solid #fff;
+            box-shadow: inset -4px -4px 0px 0px #11782a, 6px 6px 0px 0px #000;
             transition: all 0.1s ease;
             cursor: pointer;
-            white-space: nowrap;
+            margin-top: 10px;
+            image-rendering: pixelated;
         }
 
         .playstore-btn:hover {
             background-color: #2eff65;
             transform: scale(1.03);
-            box-shadow: inset -3px -3px 0px 0px #11782a, 4px 4px 0px 0px #000;
+            box-shadow: inset -4px -4px 0px 0px #11782a, 8px 8px 0px 0px #000;
         }
 
         .playstore-btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: inset 3px 3px 0px 0px #11782a, 1px 1px 0px 0px #000;
+            transform: translate(3px, 3px);
+            box-shadow: inset 4px 4px 0px 0px #11782a, 2px 2px 0px 0px #000;
         }
 
         .playstore-btn i {
-            font-size: 14px;
+            font-size: 24px;
         }
 
-        /* Botón para cerrar/ocultar banner si molesta */
-        .close-banner {
-            background: none;
-            border: none;
-            color: #888;
-            font-size: 12px;
-            cursor: pointer;
-            padding: 2px 5px;
-            line-height: 1;
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            font-size: 8px;
+            color: #666;
+            text-shadow: 1px 1px #000;
+            padding-bottom: 20px;
         }
 
-        .close-banner:hover {
-            color: #ff4444;
-        }
-
-        /* Contenedor del Iframe */
-        .game-wrapper {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .game-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
-
-        /* Responsivo para móviles */
+        /* Responsive para móviles */
         @media (max-width: 600px) {
-            .pixel-banner {
-                width: 90%;
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
-                top: 8px;
-                padding: 8px;
-            }
-            .pixel-banner p {
-                font-size: 8px;
-            }
-            .playstore-btn {
-                font-size: 8px;
-                padding: 6px 10px;
-            }
+            h1 { font-size: 14px; }
+            p { font-size: 9px; }
+            .playstore-btn { font-size: 10px; padding: 14px 20px; }
+            .features-box { padding: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Banner Pixel Art Superior para promocionar la versión móvil -->
-    <div class="pixel-banner" id="pixel-banner">
-        <p>📱 PLAY ON THE GO! <span>GET THE MOBILE APP</span></p>
+    <div class="landing-container">
         
-        <!-- SUSTITUYE ESTE ENLACE CON TU URL REAL DE GOOGLE PLAY -->
+        <!-- Logo del juego -->
+        <img src="logo1.png" alt="B.E Pixel Heroes Logo" class="game-logo">
+
+        <!-- Título -->
+        <h1>B.E PIXEL HEROES</h1>
+
+        <!-- Descripción corta -->
+        <p>
+            An indie Pixel-Art RPG featuring active and idle combat. Active play is heavily rewarded while going idle imposes cooldown debuffs. Dive into adventure on your mobile device!
+        </p>
+
+        <!-- Botón de Descarga Principal -->
+        <!-- RECUERDA CAMBIAR EL ENLACE POR TU URL REAL DE GOOGLE PLAY -->
         <a href="https://play.google.com/store/apps/details?id=TU_PACKAGE_NAME" 
            target="_blank" 
            rel="noopener noreferrer" 
            class="playstore-btn">
-            <i class="fa-brands fa-google-play"></i> GOOGLE PLAY
+            <i class="fa-brands fa-google-play"></i> AVAILABLE ON GOOGLE PLAY
         </a>
 
-        <button class="close-banner" onclick="document.getElementById('pixel-banner').style.display='none';" title="Close notification">✕</button>
+        <!-- Características destacadas en caja estilo retro -->
+        <div class="features-box">
+            <h3>⚔️ GAME FEATURES</h3>
+            <ul>
+                <li><i class="fa-solid fa-sword"></i> <strong>Hybrid Combat:</strong> Active play gives maximum efficiency; strategic decisions matter.</li>
+                <li><i class="fa-solid fa-palette"></i> <strong>Retro Pixel Art:</strong> Beautiful classic graphics built for RPG lovers.</li>
+                <li><i class="fa-solid fa-rotate"></i> <strong>Constant Updates:</strong> Weekly content drops, new zones, gear, and classes on the way!</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            © 2026 B.E Pixel Heroes - Developed with passion.
+        </div>
+
     </div>
 
-    <div class="game-wrapper" id="game-wrapper">
-        <!-- El juego carga directamente en pantalla completa -->
-        <iframe 
-            id="game-iframe" 
-            src="be-pixelheroes/index.html" 
-            allow="autoplay; fullscreen; gamepad; clipboard-read; clipboard-write" 
-            allowfullscreen>
-        </iframe>
-    </div>
-
-    <script>
-        const iframe = document.getElementById('game-iframe');
-
-        // Capturar token de Google OAuth si venimos de redirección y pasárselo al juego
-        if (window.location.hash && window.location.hash.includes('access_token=')) {
-            iframe.src = 'be-pixelheroes/index.html' + window.location.hash;
-            window.history.replaceState(null, null, window.location.pathname);
-        }
-
-        // Mantener el foco en el juego automáticamente para que respondan los controles y el teclado
-        window.addEventListener('click', (e) => {
-            // Evitamos quitar el foco si el usuario pulsa sobre el enlace de Google Play
-            if (!e.target.closest('#pixel-banner') && iframe) {
-                iframe.focus();
-            }
-        });
-        
-        window.addEventListener('load', () => {
-            if (iframe) iframe.focus();
-        });
-    </script>
 </body>
 </html>
