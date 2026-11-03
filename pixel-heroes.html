@@ -130,7 +130,6 @@
             height: 380px;
             border: 4px solid var(--border-light);
             box-shadow: 0 12px 0 #000, 0 0 30px rgba(107, 91, 149, 0.3);
-            /* Imagen bajada un poco para mostrar mejor el contenido central usando background-position */
             background: url('banner-pixel-heroes2.jpg') center 60% / cover no-repeat #000;
             position: relative;
             display: flex;
@@ -366,6 +365,14 @@
             transform: scale(1.03);
         }
 
+        .privacy-link {
+            color: var(--pixel-gold);
+            text-decoration: underline;
+            font-size: 8px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
         footer {
             margin-top: 40px;
             font-size: 8px;
@@ -412,7 +419,6 @@
                     <h1 id="main-title">KINGDOM PIXEL HEROES</h1>
                 </div>
                 <!-- GOOGLE PLAY CTA -->
-                <!-- RECUERDA PONER TU ENLACE REAL DE LA PLAY STORE AQUÍ -->
                 <a href="https://play.google.com/store/apps/details?id=com.ym21studio.bepixelheroes" 
                    target="_blank" 
                    rel="noopener noreferrer" 
@@ -487,11 +493,10 @@
             </div>
         </div>
 
-        <!-- COMUNIDAD Y ENLACES (Sin Discord) -->
+        <!-- COMUNIDAD Y ENLACES -->
         <div style="text-align: center; margin-top: 10px;">
             <h2 class="section-header" id="community-header" style="border-left-color: #3b82f6; display: inline-block; margin-bottom: 25px;">JOIN THE COMMUNITY</h2>
             <div class="community-section">
-                <!-- RECUERDA PONER TU ENLACE REAL DE ITCH.IO AQUÍ -->
                 <a href="https://ym21studio.itch.io/be-pixel-heroes" target="_blank" class="community-btn">
                     <i class="fa-brands fa-itch-io" style="font-size: 16px; color: #fa5c5c;"></i> ITCH.IO DEVLOGS
                 </a>
@@ -500,6 +505,11 @@
 
         <footer>
             © 2026 KINGDOM PIXEL HEROES • DEVELOPED WITH PASSION BY 21YM STUDIO
+            <br>
+            <!-- BOTÓN / ENLACE PRIVACY POLICY -->
+            <a href="https://sites.google.com/view/my-cozy-books-privacy/inicio" target="_blank" rel="noopener noreferrer" class="privacy-link" id="privacy-text">
+                PRIVACY POLICY
+            </a>
         </footer>
 
     </div>
@@ -527,7 +537,8 @@
                 road2Desc: "Upcoming introduction of dungeons, crafting professions, guilds, arenas, and live player economies.",
                 road3Title: "Next-Gen PC Version",
                 road3Desc: "A complete standalone PC release featuring vastly superior, high-resolution pixel art and expanded desktop layouts.",
-                communityHeader: "JOIN THE COMMUNITY"
+                communityHeader: "JOIN THE COMMUNITY",
+                privacy: "PRIVACY POLICY"
             },
             es: {
                 status: "ESTADO DEL SISTEMA: EN DESARROLLO",
@@ -549,7 +560,8 @@
                 road2Desc: "Próxima introducción de mazmorras, profesiones de artesanía, clanes, arenas y economías en vivo.",
                 road3Title: "Versión PC de Nueva Generación",
                 road3Desc: "Un lanzamiento independiente completo para PC con gráficos pixel-art en alta resolución muy superiores y diseños adaptados a escritorio.",
-                communityHeader: "ÚNETE A LA COMUNIDAD"
+                communityHeader: "ÚNETE A LA COMUNIDAD",
+                privacy: "POLÍTICA DE PRIVACIDAD"
             },
             pt: {
                 status: "STATUS DO SISTEMA: EM DESENVOLVIMENTO",
@@ -571,13 +583,16 @@
                 road2Desc: "Futura introdução de masmorras, profissões de criação, guildas, arenas e economias ao vivo.",
                 road3Title: "Versão PC Next-Gen",
                 road3Desc: "Um lançamento completo para PC com pixel art de alta resolução muito superior e layouts expandidos para desktop.",
-                communityHeader: "JUNTE-SE À COMUNIDADE"
+                communityHeader: "JUNTE-SE À COMUNIDADE",
+                privacy: "POLÍTICA DE PRIVACIDADE"
             }
         };
 
         function setLanguage(lang) {
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
 
             const t = translations[lang];
             document.getElementById('status-text').innerText = t.status;
@@ -600,6 +615,7 @@
             document.getElementById('road3-title').innerText = t.road3Title;
             document.getElementById('road3-desc').innerText = t.road3Desc;
             document.getElementById('community-header').innerText = t.communityHeader;
+            document.getElementById('privacy-text').innerText = t.privacy;
         }
     </script>
 </body>
