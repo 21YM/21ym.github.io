@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kingdom Pixel Heroes | Mobile Pixel Art RPG</title>
+    <title>Kingdom Pixel Heroes | Official Site</title>
     
     <link rel="icon" type="image/png" href="logo1.png">
 
-    <!-- Open Graph para redes sociales -->
-    <meta property="og:title" content="Kingdom Pixel Heroes | Mobile RPG">
-    <meta property="og:description" content="Play the active & idle hybrid pixel-art RPG on Android!">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kingdom Pixel Heroes | Mobile Pixel Art RPG">
+    <meta property="og:description" content="An epic hybrid active & idle pixel-art RPG. Play now on Google Play!">
     <meta property="og:image" content="banner-pixel-heroes.jpg">
 
-    <!-- Fuentes e Iconos -->
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,13 +20,16 @@
     
     <style>
         :root {
-            --bg-dark: #0b0914;
-            --card-bg: #181425;
-            --pixel-gold: #ffcc00;
-            --pixel-green: #25e054;
-            --pixel-red: #ff3344;
-            --pixel-blue: #00bfff;
-            --pixel-border: #ffffff;
+            --bg-dark: #07050d;
+            --bg-panel: #120e21;
+            --bg-panel-hover: #1b1532;
+            --pixel-gold: #f4c430;
+            --pixel-gold-glow: rgba(244, 196, 48, 0.4);
+            --pixel-green: #10b981;
+            --pixel-green-hover: #34d399;
+            --pixel-red: #ef4444;
+            --border-color: #3b2f58;
+            --border-light: #6b5b95;
         }
 
         * {
@@ -48,403 +51,532 @@
             overflow-x: hidden;
         }
 
-        /* BARRA SUPERIOR CON IDIOMAS Y BANNER */
+        /* FONDO ATMOSFÉRICO SUTIL */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 20%, rgba(30, 20, 60, 0.4) 0%, rgba(7, 5, 13, 0.95) 80%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* NAVEGACIÓN SUPERIOR AAA */
         .top-nav {
             width: 100%;
-            background: #110e1b;
-            border-bottom: 4px solid var(--pixel-border);
-            padding: 10px 20px;
+            max-width: 1200px;
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 0 #000;
+            z-index: 100;
         }
 
-        .brand-mini {
-            font-size: 10px;
-            color: var(--pixel-gold);
-            text-shadow: 2px 2px #000;
+        .brand-box {
             display: flex;
             align-items: center;
+            gap: 15px;
+        }
+
+        .brand-box img {
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--pixel-gold);
+            box-shadow: 0 0 10px var(--pixel-gold-glow);
+        }
+
+        .brand-box span {
+            font-size: 11px;
+            color: var(--pixel-gold);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px #000;
+        }
+
+        .lang-picker {
+            display: flex;
             gap: 10px;
         }
 
-        .brand-mini img {
-            width: 24px;
-            height: 24px;
-            border: 2px solid #fff;
-        }
-
-        /* Selector de Idioma Retro a la Derecha */
-        .lang-picker {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
         .lang-btn {
-            background: #181425;
-            color: #fff;
-            border: 2px solid #fff;
-            padding: 6px 10px;
+            background: var(--bg-panel);
+            color: #aaa;
+            border: 2px solid var(--border-color);
+            padding: 8px 12px;
             font-size: 8px;
             cursor: pointer;
-            box-shadow: 2px 2px 0 #000;
-            transition: all 0.1s ease;
+            transition: all 0.2s ease;
+            box-shadow: 3px 3px 0 #000;
         }
 
         .lang-btn:hover, .lang-btn.active {
             background: var(--pixel-gold);
             color: #000;
-            box-shadow: inset -2px -2px 0 #b38f00;
+            border-color: #fff;
+            color: #000;
+            box-shadow: 3px 3px 0 #000, 0 0 12px var(--pixel-gold-glow);
         }
 
-        /* BANNER CABECERA DE IMAGEN */
-        .header-banner {
+        /* BANNER CINEMATOGRÁFICO GRANDE */
+        .hero-banner-container {
             width: 100%;
-            max-width: 900px;
-            height: 220px;
-            margin-top: 20px;
-            border: 4px solid var(--pixel-border);
-            box-shadow: 0 8px 0 #000;
+            max-width: 1100px;
+            padding: 0 20px;
+            margin-top: 10px;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 380px;
+            border: 4px solid var(--border-light);
+            box-shadow: 0 12px 0 #000, 0 0 30px rgba(107, 91, 149, 0.3);
             background: url('banner-pixel-heroes.jpg') center/cover no-repeat #000;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
 
-        .banner-overlay {
+        .hero-banner::after {
+            content: "";
             position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: linear-gradient(transparent, rgba(11, 9, 20, 0.95));
-            padding: 15px;
-            text-align: center;
+            inset: 0;
+            background: linear-gradient(to top, rgba(7, 5, 13, 0.95) 0%, rgba(7, 5, 13, 0.3) 50%, transparent 100%);
+            pointer-events: none;
         }
 
-        /* PANEL CON LUZ PARPADEANTE (IN DEVELOPMENT) */
-        .status-panel {
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .hero-title-area h1 {
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 4px 4px #000, 0 0 15px var(--pixel-gold-glow);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        /* PANEL STATUS LED */
+        .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            background: #000;
-            border: 3px solid var(--pixel-gold);
-            padding: 8px 14px;
-            box-shadow: 4px 4px 0 #000;
-            margin-top: -20px;
-            z-index: 10;
+            gap: 8px;
+            background: rgba(0,0,0,0.8);
+            border: 2px solid var(--pixel-red);
+            padding: 6px 12px;
+            box-shadow: 3px 3px 0 #000;
         }
 
-        .status-light {
-            width: 10px;
-            height: 10px;
+        .status-dot {
+            width: 8px;
+            height: 8px;
             background-color: var(--pixel-red);
-            border-radius: 50%;
             box-shadow: 0 0 8px var(--pixel-red);
-            animation: blink 1s infinite alternate;
+            animation: pulse-red 1.2s infinite alternate;
         }
 
-        @keyframes blink {
+        @keyframes pulse-red {
             from { opacity: 1; transform: scale(1); }
-            to { opacity: 0.2; transform: scale(0.8); }
+            to { opacity: 0.3; transform: scale(0.7); }
         }
 
-        .status-text {
-            font-size: 8px;
-            color: #fff;
+        .status-badge span {
+            font-size: 7px;
+            color: #ff8888;
             letter-spacing: 1px;
         }
 
-        /* CONTENEDOR PRINCIPAL */
-        .main-container {
-            width: 100%;
-            max-width: 850px;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-        }
-
-        h1 {
-            font-size: 18px;
-            color: var(--pixel-gold);
-            text-shadow: 3px 3px #000;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .description-text {
-            font-size: 9px;
-            color: #ccc;
-            line-height: 1.8;
-            text-align: center;
-            max-width: 700px;
-            text-shadow: 1px 1px #000;
-        }
-
-        /* BOTÓN GOOGLE PLAY GIGANTE */
-        .playstore-cta {
+        /* BOTÓN GOOGLE PLAY AAA */
+        .playstore-btn-hero {
             background-color: var(--pixel-green);
             color: #000;
             text-decoration: none;
             font-size: 11px;
-            padding: 18px 28px;
+            padding: 16px 26px;
             display: inline-flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             font-weight: bold;
-            border: 4px solid #fff;
-            box-shadow: inset -4px -4px 0px 0px #11782a, 6px 6px 0px 0px #000;
-            transition: all 0.1s ease;
-            cursor: pointer;
-            margin: 10px 0;
+            border: 3px solid #fff;
+            box-shadow: inset -3px -3px 0px 0px #065f46, 6px 6px 0px 0px #000;
+            transition: all 0.15s ease;
         }
 
-        .playstore-cta:hover {
-            background-color: #2eff65;
-            transform: scale(1.03);
-            box-shadow: inset -4px -4px 0px 0px #11782a, 8px 8px 0px 0px #000;
+        .playstore-btn-hero:hover {
+            background-color: var(--pixel-green-hover);
+            transform: translateY(-2px);
+            box-shadow: inset -3px -3px 0px 0px #065f46, 8px 8px 0px 0px #000, 0 0 20px rgba(16, 185, 129, 0.4);
         }
 
-        .playstore-cta:active {
-            transform: translate(3px, 3px);
-            box-shadow: inset 4px 4px 0px 0px #11782a, 2px 2px 0px 0px #000;
+        .playstore-btn-hero:active {
+            transform: translate(2px, 2px);
+            box-shadow: inset 3px 3px 0px 0px #065f46, 2px 2px 0px 0px #000;
         }
 
-        .playstore-cta i {
-            font-size: 22px;
+        .playstore-btn-hero i {
+            font-size: 20px;
         }
 
-        /* CAJAS DE CONTENIDO ESTILO RETRO */
-        .grid-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        /* CONTENEDOR PRINCIPAL DE SECCIONES */
+        .main-grid-container {
             width: 100%;
-        }
-
-        .pixel-card {
-            background-color: var(--card-bg);
-            border: 4px solid var(--pixel-border);
-            box-shadow: 6px 6px 0 #000;
-            padding: 20px;
+            max-width: 1100px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 35px;
         }
 
-        .pixel-card h3 {
-            font-size: 10px;
+        .section-header {
+            font-size: 14px;
             color: var(--pixel-gold);
-            border-bottom: 2px dashed #444;
-            padding-bottom: 8px;
+            text-shadow: 3px 3px #000;
+            border-left: 6px solid var(--pixel-gold);
+            padding-left: 12px;
+            margin-bottom: 5px;
         }
 
-        .pixel-card ul {
-            list-style: none;
+        /* TARJETAS DE CATEGORÍAS GRANDES Y EPIC */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-panel);
+            border: 3px solid var(--border-color);
+            box-shadow: 8px 8px 0 #000;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            border-color: var(--pixel-gold);
+            background-color: var(--bg-panel-hover);
+            transform: translateY(-4px);
+            box-shadow: 8px 12px 0 #000, 0 0 20px rgba(244, 196, 48, 0.15);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #07050d;
+            border: 2px solid var(--pixel-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--pixel-gold);
+            box-shadow: 4px 4px 0 #000;
+        }
+
+        .feature-card h3 {
+            font-size: 12px;
+            color: #fff;
+            text-shadow: 2px 2px #000;
+        }
+
+        .feature-card p {
+            font-size: 9px;
+            color: #b8b2cb;
+            line-height: 1.8;
+            text-shadow: 1px 1px #000;
+        }
+
+        /* ROADMAP / FUTURO SECCIÓN DOBLE */
+        .roadmap-container {
+            background: linear-gradient(135deg, var(--bg-panel) 0%, #0d091a 100%);
+            border: 4px solid var(--border-light);
+            box-shadow: 10px 10px 0 #000;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .roadmap-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .roadmap-step {
+            background: rgba(0,0,0,0.4);
+            border: 2px dashed var(--border-color);
+            padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
 
-        .pixel-card li {
-            font-size: 8px;
-            line-height: 1.6;
-            color: #ddd;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        .pixel-card li i {
-            color: var(--pixel-blue);
-        }
-
-        /* LINKS COMUNIDAD FOOTER */
-        .community-links {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .link-btn {
-            background: #1f1a30;
-            color: #fff;
-            text-decoration: none;
-            font-size: 8px;
-            padding: 10px 14px;
-            border: 2px solid #fff;
-            box-shadow: 3px 3px 0 #000;
+        .roadmap-step h4 {
+            font-size: 10px;
+            color: var(--pixel-gold);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .link-btn:hover {
-            background: #312a4a;
-            color: var(--pixel-gold);
+        .roadmap-step p {
+            font-size: 8px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* COMUNIDAD Y FOOTER */
+        .community-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .community-btn {
+            background: var(--bg-panel);
+            color: #fff;
+            text-decoration: none;
+            font-size: 9px;
+            padding: 14px 22px;
+            border: 3px solid var(--border-color);
+            box-shadow: 4px 4px 0 #000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .community-btn:hover {
+            background: var(--border-color);
+            border-color: #fff;
+            transform: scale(1.03);
         }
 
         footer {
-            margin-top: 30px;
-            font-size: 7px;
-            color: #666;
+            margin-top: 40px;
+            font-size: 8px;
+            color: #554a78;
             text-align: center;
-            padding-bottom: 25px;
+            padding-bottom: 40px;
+            text-shadow: 1px 1px #000;
         }
 
-        /* RESPONSIVE PARA MÓVILES */
-        @media (max-width: 650px) {
-            .grid-box { grid-template-columns: 1fr; }
-            h1 { font-size: 14px; }
-            .header-banner { height: 140px; }
-            .playstore-cta { font-size: 9px; padding: 14px 18px; }
-            .status-text { font-size: 7px; }
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-banner { height: 320px; }
+            .hero-title-area h1 { font-size: 16px; }
+            .hero-content { padding: 20px; flex-direction: column; align-items: flex-start; }
+            .playstore-btn-hero { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAV BAR SUPERIOR CON SELECTOR DE IDIOMAS -->
+    <!-- TOP NAVIGATION -->
     <nav class="top-nav">
-        <div class="brand-mini">
+        <div class="brand-box">
             <img src="logo1.png" alt="Logo">
             <span>21YM STUDIO</span>
         </div>
-        
-        <!-- Selector de Idioma (Arriba a la derecha) -->
         <div class="lang-picker">
             <button class="lang-btn active" onclick="setLanguage('en')">EN 🇬🇧</button>
             <button class="lang-btn" onclick="setLanguage('es')">ES 🇪🇸</button>
         </div>
     </nav>
 
-    <!-- BANNER DE CABECERA DE IMAGEN -->
-    <div class="header-banner">
-        <div class="banner-overlay"></div>
+    <!-- CINEMATIC HERO BANNER -->
+    <div class="hero-banner-container">
+        <div class="hero-banner">
+            <div class="hero-content">
+                <div class="hero-title-area">
+                    <div class="status-badge" style="margin-bottom: 15px;">
+                        <div class="status-dot"></div>
+                        <span id="status-text">SYSTEM STATUS: IN DEVELOPMENT</span>
+                    </div>
+                    <h1 id="main-title">KINGDOM PIXEL HEROES</h1>
+                </div>
+                <!-- GOOGLE PLAY CTA -->
+                <!-- RECUERDA PONER TU ENLACE REAL DE LA PLAY STORE AQUÍ -->
+                <a href="https://play.google.com/store/apps/details?id=TU_PACKAGE_NAME" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="playstore-btn-hero">
+                    <i class="fa-brands fa-google-play"></i>
+                    <span id="cta-text">GET IT ON GOOGLE PLAY</span>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <!-- PANEL STATUS EN DESARROLLO CON LUZ PARPADEANTE -->
-    <div class="status-panel">
-        <div class="status-light"></div>
-        <span class="status-text" id="status-text">SYSTEM STATUS: IN DEVELOPMENT</span>
-    </div>
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <div class="main-container">
+    <!-- MAIN CONTENT SECTIONS -->
+    <div class="main-grid-container">
         
-        <h1 id="title">KINGDOM PIXEL HEROES</h1>
-
-        <p class="description-text" id="desc">
-            An indie Pixel-Art RPG featuring both active and idle combat. Active play is rewarded while idle mode imposes cooldown debuffs. Dive into the adventure!
-        </p>
-
-        <!-- BOTÓN DE GOOGLE PLAY -->
-        <!-- RECUERDA PONER TU LINK REAL AQUÍ -->
-        <a href="https://play.google.com/store/apps/details?id=TU_PACKAGE_NAME" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="playstore-cta">
-            <i class="fa-brands fa-google-play"></i>
-            <span id="cta-btn">GET IT ON GOOGLE PLAY</span>
-        </a>
-
-        <!-- GRID DE CARACTERÍSTICAS Y ROADMAP -->
-        <div class="grid-box">
-            
-            <div class="pixel-card">
-                <h3 id="feat-title">⚔️ GAME FEATURES</h3>
-                <ul>
-                    <li><i class="fa-solid fa-bolt"></i> <span id="feat-1">Active combat yields maximum reward.</span></li>
-                    <li><i class="fa-solid fa-paintbrush"></i> <span id="feat-2">Nostalgic retro pixel art visual style.</span></li>
-                    <li><i class="fa-solid fa-arrows-rotate"></i> <span id="feat-3">Weekly content & system updates.</span></li>
-                </ul>
+        <!-- DESCRIPCIÓN GENERAL -->
+        <div class="feature-card" style="width: 100%;">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="feature-icon"><i class="fa-solid fa-gamepad"></i></div>
+                <div>
+                    <h3 id="overview-title" style="font-size: 13px; color: var(--pixel-gold); margin-bottom: 8px;">THE ULTIMATE HYBRID RPG</h3>
+                    <p id="overview-desc" style="font-size: 10px; line-height: 1.9;">An immersive indie Pixel-Art RPG built for true tactical lovers. Experience a seamless fusion where active combat commands your complete strategy, and idle systems keep your legacy growing when you step away.</p>
+                </div>
             </div>
-
-            <div class="pixel-card">
-                <h3 id="road-title">🔮 ROADMAP / FUTURE</h3>
-                <ul>
-                    <li><i class="fa-solid fa-map"></i> <span id="road-1">New biomes & unique enemy types.</span></li>
-                    <li><i class="fa-solid fa-shield-cat"></i> <span id="road-2">New gear tiers, pets & playable classes.</span></li>
-                    <li><i class="fa-solid fa-desktop"></i> <span id="road-3">Dedicated PC Version with upgraded art!</span></li>
-                </ul>
-            </div>
-
         </div>
 
-        <!-- ENLACES DE COMUNIDAD -->
-        <div class="community-links">
-            <!-- RECUERDA CAMBIAR ESTOS LINKS POR LOS TUYOS -->
-            <a href="https://21ym-studio.itch.io/kingdom-pixel-heroes" target="_blank" class="link-btn">
-                <i class="fa-brands fa-italic"></i> ITCH.IO DEVLOGS
-            </a>
-            <a href="AQUÍ_TU_DISCORD_O_REDES" target="_blank" class="link-btn">
-                <i class="fa-brands fa-discord"></i> DISCORD / COMMUNITY
-            </a>
+        <!-- SECCIÓN DE CARACTERÍSTICAS AAA (GRANDE) -->
+        <div>
+            <h2 class="section-header" id="features-header">KEY GAMEPLAY FEATURES</h2>
+            <div class="features-grid" style="margin-top: 20px;">
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                    <h3 id="feat1-title">Active Combat Focus</h3>
+                    <p id="feat1-desc">Direct engagement yields maximum efficiency and rewards. Avoid idle penalties through active tactical decisions and timely manual inputs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
+                    <h3 id="feat2-title">Retro Pixel Artistry</h3>
+                    <p id="feat2-desc">Hand-crafted retro aesthetics, custom character sprites, and rich environments designed meticulously for classic RPG enthusiasts.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3 id="feat3-title">Evolving Progression</h3>
+                    <p id="feat3-desc">Frequent content drops, dynamic gear upgrades, deep skill lines, and weekly updates driven directly by community feedback.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECCIÓN ROADMAP / FUTURO (GRANDE) -->
+        <div class="roadmap-container">
+            <h2 class="section-header" id="roadmap-header" style="border-left-color: var(--pixel-green);">DEVELOPMENT ROADMAP & PC EVOLUTION</h2>
+            <div class="roadmap-steps">
+                
+                <div class="roadmap-step">
+                    <h4><i class="fa-solid fa-mobile-screen"></i> <span id="road1-title">Mobile Playtest</span></h4>
+                    <p id="road1-desc">Active balancing, bug fixing, and continuous weekly updates for the Android version on Google Play.</p>
+                </div>
+
+                <div class="roadmap-step">
+                    <h4><i class="fa-solid fa-users"></i> <span id="road2-title">Multiplayer & Systems</span></h4>
+                    <p id="road2-desc">Upcoming introduction of dungeons, crafting professions, guilds, arenas, and live player economies.</p>
+                </div>
+
+                <div class="roadmap-step">
+                    <h4><i class="fa-solid fa-desktop"></i> <span id="road3-title">Next-Gen PC Version</span></h4>
+                    <p id="road3-desc">A complete standalone PC release featuring vastly superior, high-resolution pixel art and expanded desktop layouts.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- COMUNIDAD Y ENLACES -->
+        <div style="text-align: center; margin-top: 10px;">
+            <h2 class="section-header" id="community-header" style="border-left-color: #3b82f6; display: inline-block; margin-bottom: 25px;">JOIN THE COMMUNITY</h2>
+            <div class="community-section">
+                <!-- RECUERDA PONER TUS ENLACES REALES AQUÍ -->
+                <a href="https://21ym-studio.itch.io/kingdom-pixel-heroes" target="_blank" class="community-btn">
+                    <i class="fa-brands fa-itch-io" style="font-size: 16px; color: #fa5c5c;"></i> ITCH.IO DEVLOGS
+                </a>
+                <a href="AQUÍ_TU_DISCORD" target="_blank" class="community-btn">
+                    <i class="fa-brands fa-discord" style="font-size: 16px; color: #5865F2;"></i> DISCORD SERVER
+                </a>
+            </div>
         </div>
 
         <footer>
-            © 2026 KINGDOM PIXEL HEROES • DEVELOPED BY 21YM STUDIO
+            © 2026 KINGDOM PIXEL HEROES • DEVELOPED WITH PASSION BY 21YM STUDIO
         </footer>
 
     </div>
 
-    <!-- SCRIPT PARA INTERCAMBIO DINÁMICO DE IDIOMAS (ES / EN) -->
+    <!-- SCRIPT MULTIIDIOMA -->
     <script>
         const translations = {
             en: {
-                status: "STATUS: IN DEVELOPMENT",
-                title: "KINGDOM PIXEL HEROES",
-                desc: "An indie Pixel-Art RPG featuring both active and idle combat. Active play is rewarded while idle mode imposes cooldown debuffs. Dive into the adventure!",
+                status: "SYSTEM STATUS: IN DEVELOPMENT",
+                mainTitle: "KINGDOM PIXEL HEROES",
                 cta: "GET IT ON GOOGLE PLAY",
-                featTitle: "⚔️ GAME FEATURES",
-                feat1: "Active combat yields maximum reward.",
-                feat2: "Nostalgic retro pixel art visual style.",
-                feat3: "Weekly content & balance updates.",
-                roadTitle: "🔮 ROADMAP / FUTURE",
-                road1: "New biomes & unique enemy types.",
-                road2: "New gear tiers, pets & playable classes.",
-                road3: "Dedicated PC Version with upgraded art!"
+                overviewTitle: "THE ULTIMATE HYBRID RPG",
+                overviewDesc: "An immersive indie Pixel-Art RPG built for true tactical lovers. Experience a seamless fusion where active combat commands your complete strategy, and idle systems keep your legacy growing when you step away.",
+                featuresHeader: "KEY GAMEPLAY FEATURES",
+                feat1Title: "Active Combat Focus",
+                feat1Desc: "Direct engagement yields maximum efficiency and rewards. Avoid idle penalties through active tactical decisions and timely manual inputs.",
+                feat2Title: "Retro Pixel Artistry",
+                feat2Desc: "Hand-crafted retro aesthetics, custom character sprites, and rich environments designed meticulously for classic RPG enthusiasts.",
+                feat3Title: "Evolving Progression",
+                feat3Desc: "Frequent content drops, dynamic gear upgrades, deep skill lines, and weekly updates driven directly by community feedback.",
+                roadmapHeader: "DEVELOPMENT ROADMAP & PC EVOLUTION",
+                road1Title: "Mobile Playtest",
+                road1Desc: "Active balancing, bug fixing, and continuous weekly updates for the Android version on Google Play.",
+                road2Title: "Multiplayer & Systems",
+                road2Desc: "Upcoming introduction of dungeons, crafting professions, guilds, arenas, and live player economies.",
+                road3Title: "Next-Gen PC Version",
+                road3Desc: "A complete standalone PC release featuring vastly superior, high-resolution pixel art and expanded desktop layouts.",
+                communityHeader: "JOIN THE COMMUNITY"
             },
             es: {
-                status: "ESTADO: EN DESARROLLO",
-                title: "KINGDOM PIXEL HEROES",
-                desc: "Un RPG Pixel-Art indie que combina combate activo e idle. ¡El juego activo te premia, mientras que el modo idle aplica penalizaciones de cooldown!",
+                status: "ESTADO DEL SISTEMA: EN DESARROLLO",
+                mainTitle: "KINGDOM PIXEL HEROES",
                 cta: "DISPONIBLE EN GOOGLE PLAY",
-                featTitle: "⚔️ CARACTERÍSTICAS",
-                feat1: "El combate activo da máxima recompensa.",
-                feat2: "Estilo visual retro pixel-art nostálgico.",
-                feat3: "Actualizaciones semanales de contenido.",
-                roadTitle: "🔮 PRÓXIMAMENTE",
-                road1: "Nuevos biomas y tipos de enemigos.",
-                road2: "Más equipamiento, mascotas y clases.",
-                road3: "¡Versión para PC con gráficos mejorados!"
+                overviewTitle: "EL RPG HÍBRIDO DEFINITIVO",
+                overviewDesc: "Un RPG indie Pixel-Art inmersivo diseñado para verdaderos amantes de la táctica. Experimenta una fusión perfecta donde el combate activo exige tu estrategia, y los sistemas idle mantienen tu legado vivo cuando descansas.",
+                featuresHeader: "CARACTERÍSTICAS PRINCIPALES",
+                feat1Title: "Enfoque en Combate Activo",
+                feat1Desc: "La participación directa otorga la máxima eficiencia y recompensas. Evita penalizaciones de inactividad tomando decisiones tácticas y manuales.",
+                feat2Title: "Arte Pixel Retro",
+                feat2Desc: "Estética retro hecha a mano, sprites de personajes personalizados y entornos detallados creados meticulosamente para fans de los RPG clásicos.",
+                feat3Title: "Progresión Constante",
+                feat3Desc: "Lanzamientos frecuentes de contenido, mejoras dinámicas de equipo, árboles de habilidades profundos y actualizaciones semanales basadas en la comunidad.",
+                roadmapHeader: "HOJA DE RUTA Y EVOLUCIÓN A PC",
+                road1Title: "Playtest Móvil",
+                road1Desc: "Balanceo activo, corrección de errores y actualizaciones semanales continuas para la versión de Android en Google Play.",
+                road2Title: "Multijugador y Sistemas",
+                road2Desc: "Próxima introducción de mazmorras, profesiones de artesanía, clanes, arenas y economías en vivo.",
+                road3Title: "Versión PC de Nueva Generación",
+                road3Desc: "Un lanzamiento independiente completo para PC con gráficos pixel-art en alta resolución muy superiores y diseños adaptados a escritorio.",
+                communityHeader: "ÚNETE A LA COMUNIDAD"
             }
         };
 
         function setLanguage(lang) {
-            // Actualizar botones de la barra superior
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Traducir los campos
             const t = translations[lang];
             document.getElementById('status-text').innerText = t.status;
-            document.getElementById('title').innerText = t.title;
-            document.getElementById('desc').innerText = t.desc;
-            document.getElementById('cta-btn').innerText = t.cta;
-            document.getElementById('feat-title').innerText = t.featTitle;
-            document.getElementById('feat-1').innerText = t.feat1;
-            document.getElementById('feat-2').innerText = t.feat2;
-            document.getElementById('feat-3').innerText = t.feat3;
-            document.getElementById('road-title').innerText = t.roadTitle;
-            document.getElementById('road-1').innerText = t.road1;
-            document.getElementById('road-2').innerText = t.road2;
-            document.getElementById('road-3').innerText = t.road3;
+            document.getElementById('main-title').innerText = t.mainTitle;
+            document.getElementById('cta-text').innerText = t.cta;
+            document.getElementById('overview-title').innerText = t.overviewTitle;
+            document.getElementById('overview-desc').innerText = t.overviewDesc;
+            document.getElementById('features-header').innerText = t.featuresHeader;
+            document.getElementById('feat1-title').innerText = t.feat1Title;
+            document.getElementById('feat1-desc').innerText = t.feat1Desc;
+            document.getElementById('feat2-title').innerText = t.feat2Title;
+            document.getElementById('feat2-desc').innerText = t.feat2Desc;
+            document.getElementById('feat3-title').innerText = t.feat3Title;
+            document.getElementById('feat3-desc').innerText = t.feat3Desc;
+            document.getElementById('roadmap-header').innerText = t.roadmapHeader;
+            document.getElementById('road1-title').innerText = t.road1Title;
+            document.getElementById('road1-desc').innerText = t.road1Desc;
+            document.getElementById('road2-title').innerText = t.road2Title;
+            document.getElementById('road2-desc').innerText = t.road2Desc;
+            document.getElementById('road3-title').innerText = t.road3Title;
+            document.getElementById('road3-desc').innerText = t.road3Desc;
+            document.getElementById('community-header').innerText = t.communityHeader;
         }
     </script>
 </body>
